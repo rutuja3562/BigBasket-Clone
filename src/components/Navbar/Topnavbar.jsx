@@ -22,7 +22,12 @@ export const Topnavbar = () => {
   return (
     <Box width={"75%"} margin="auto">
       <Box>
-        <Box display={"flex"}>
+        <Box
+          display={"flex"}
+          borderWidth="1px"
+          overflow="hidden"
+          paddingBottom={"3px"}
+        >
           <Box width="20%">
             <img
               src="https://www.bbassets.com/static/staticContent/bb_logo.png"
@@ -102,20 +107,36 @@ export const Topnavbar = () => {
                     <SearchIcon />
                   </Button>
                 </Flex>
-                <Flex width="20%" justifyContent={"space-between"}>
-                  <Box ml={"20px"}>
-                    <BsBasket3 size={"25px"} />
-                  </Box>
-                  <Box>
-                    <Text>My Basket</Text>
-                  </Box>
+                <Flex
+                  width="15%"
+                  // justifyContent={"space-between"}
+
+                  bg={" #e8e8e8"}
+                  height={"60px"}
+                >
+                  <Flex
+                    ml={"20px"}
+                    mr="1rem"
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                  >
+                    <BsBasket3 size={"20px"} />
+                  </Flex>
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    flexDirection={"column"}
+                  >
+                    <Text fontSize={"12px"}>My Basket</Text>
+                    <Text>{0}Items</Text>
+                  </Flex>
                 </Flex>
               </Flex>
             </Box>
           </Box>
         </Box>
-        <Box>
-          <Flex mt={"1rem"} alignItems={"center"}>
+        <Box borderWidth="1px" overflow="hidden">
+          <Flex alignItems={"center"}>
             <Box>
               <Menu border={"1px solid green"} width={"100%"} isOpen={isOpen}>
                 <Box>
@@ -143,7 +164,7 @@ export const Topnavbar = () => {
                   <Flex>
                     <MenuList
                       bg={"white"}
-                      width={"870px"}
+                      width={"1080px"}
                       fontSize="14px"
                       fontWeight={"300"}
                       borderRadius={0}
@@ -152,40 +173,40 @@ export const Topnavbar = () => {
                     >
                       <Flex>
                         <div className={styles.borderright}>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Fruits & Vegetables
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Foodgrains, Oil & Masala
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Bakery, Cakes & Dairy
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Beverages
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Snakes & Branded Foods
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Beauty & Hygiene
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Cleaning & Household
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Kitchen, Garden & Pets
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Eggs, Meat & Fish
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Gourmet & World Food
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Baby Cary
                           </MenuItem>
-                          <MenuItem borderBottom={"1px solid grey"}>
+                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             View All
                           </MenuItem>
                         </div>
@@ -208,7 +229,7 @@ export const Topnavbar = () => {
                           <MenuItem>Gourd, Pumpkin, Drumstic</MenuItem>
                           <MenuItem>Specialty</MenuItem>
                         </div>
-                        <div>
+                        <div className={styles.fs12}>
                           <MenuItem
                             fontSize={"16"}
                             fontWeight={300}
@@ -238,7 +259,6 @@ export const Topnavbar = () => {
           </Flex>
         </Box>
       </Box>
-      
     </Box>
   );
 };

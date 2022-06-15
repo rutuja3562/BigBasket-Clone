@@ -4,6 +4,8 @@ import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
+// import { img7, img8, img9 } from "./img";
+// import { img1, img2, img3, img4, img5, img6 } from "./img";
 
 // Settings for the slider
 const settings = {
@@ -18,7 +20,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function Carousel() {
+export default function Corouseltwo() {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState();
@@ -30,24 +32,20 @@ export default function Carousel() {
 
   // These are the images used in the slide
   const cards = [
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_flavoured-milk_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_tbcd_snacking-store_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hpc_cmc_cold-pressed_460_140622.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m__bcd_tasties-origins_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_GM-duper-deals_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_beauty_460-250522.jpg",
-  
+    "https://www.bigbasket.com/media/uploads/banner_images/cp_pbs_entrypoint_1130x400_060622.jpg",
+    "https://www.bigbasket.com/media/uploads/banner_images/hp_cmc_hardinsasta_bangalore_400_140622.jpeg",
+    "https://www.bigbasket.com/media/uploads/banner_images/hp_c_cmc_hk_400_140622.jpg",
   ];
 
   return (
     <Box
       position={"relative"}
       height={"450px"}
-      width={"full"}
-      overflow={"hidden"}
+      borderWidth="1px"
+      overflow="hidden"
+      margin={"auto"}
       mt={0}
-      // borderWidth="1px"
-      
+      width={"75%"}
       // border={"1px solid red"}
     >
       {/* CSS files for react-slick */}
@@ -100,9 +98,9 @@ export default function Carousel() {
         {cards.map((url, index) => (
           <Box
             key={index}
-            height={"550px"}
+            height={"450px"}
             padding="0"
-            marginTop="-85px"
+            marginTop=""
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"

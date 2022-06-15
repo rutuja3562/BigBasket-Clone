@@ -21,6 +21,7 @@
   border-right: 1px solid rgb(156, 155, 155);
   font-size: 12px;
   margin-right: 1rem;
+  padding-right: 2rem;
 }
 .borderleft {
   border-left: 1px solid rgb(156, 155, 155);
@@ -32,8 +33,12 @@
   margin-right: 1rem;
 }
 .bg_grey {
-  background-color: rgb(222, 221, 221);
-  border-right: 1px solid rgb(156, 155, 155);
+  background-color: #e8e8e8;
+  border-right: 1px solid #e8e8e8;
   margin-left: -1rem;
+  font-size: 12px;
+}
+.fs12{
+  font-weight: 300;
   font-size: 12px;
 }
