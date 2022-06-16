@@ -9,6 +9,7 @@ export const BestSeller = () => {
         {data.map((e) => {
           return (
             <Box
+            key={e.id}
               className="transition"
               role={"group"}
               p={6}

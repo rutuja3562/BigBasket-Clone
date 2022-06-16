@@ -4,6 +4,8 @@ import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
+// import { img7, img8, img9 } from "./img";
+// import { img1, img2, img3, img4, img5, img6 } from "./img";
 
 // Settings for the slider
 const settings = {
@@ -18,7 +20,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function Carousel() {
+export const ProductSlider=() =>{
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState();
@@ -30,26 +32,25 @@ export default function Carousel() {
 
   // These are the images used in the slide
   const cards = [
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_flavoured-milk_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_tbcd_snacking-store_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hpc_cmc_cold-pressed_460_140622.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m__bcd_tasties-origins_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_GM-duper-deals_460-250522.jpg",
-    "https://www.bigbasket.com/media/uploads/banner_images/hp_b_h_m_beauty_460-250522.jpg",
-  
+    "https://www.bigbasket.com/media/uploads/banner_images/CXNP9513_1200x300_110322.jpg",
+    "https://www.bigbasket.com/media/uploads/banner_images/YXNP1592_1200x300_270522.jpg",
+    "https://www.bigbasket.com/media/uploads/banner_images/CXNP9519_1200x300_160322.jpg",
+    "https://www.bigbasket.com/media/uploads/banner_images/L1-YXNP2318-1200X300-15thJun22.jpg",
+    "https://www.bigbasket.com/media/uploads/banner_images/L1-YXNP1836-1200X300-1stJUN22.jpg",
+    "https://www.bigbasket.com/media/uploads/banner_images/CXNP9519_1200x300_160322.jpg",
   ];
 
   return (
     <Box
       position={"relative"}
-      height={"450px"}
-      width={"100%"}
-      overflow={"hidden"}
+      height={"300px"}
+      borderWidth="1px"
+      overflow="hidden"
+      margin={"auto"}
       mt={0}
-      margin="auto"
-      // borderWidth="1px"
-      
-      // border={"1px solid red"}
+      width={"All"}
+      padding="0"
+      //   border={"1px solid red"}
     >
       {/* CSS files for react-slick */}
       <link
@@ -68,7 +69,7 @@ export default function Carousel() {
         aria-label="left-arrow"
         colorScheme="white"
         color="black"
-        backgroundColor="white"
+        backgroundColor="transparent"
         borderRadius="full"
         position="absolute"
         left={side}
@@ -84,7 +85,7 @@ export default function Carousel() {
         aria-label="right-arrow"
         colorScheme="black"
         color="black"
-        backgroundColor="white"
+        backgroundColor="transparent"
         padding="10px"
         borderRadius="full"
         position="absolute"
@@ -101,14 +102,15 @@ export default function Carousel() {
         {cards.map((url, index) => (
           <Box
             key={index}
-            height={"550px"}
+            height={"300px"}
             padding="0"
-            marginTop="-85px"
+            marginTop="0px"
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="contain"
             backgroundImage={`url(${url})`}
+            overflow="hidden"
           />
         ))}
       </Slider>

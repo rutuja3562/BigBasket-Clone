@@ -11,12 +11,16 @@ import {
   MenuItem,
   useDisclosure,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 import { PhoneIcon, SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { ImLocation2 } from "react-icons/im";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsBasket3 } from "react-icons/bs";
 import styles from "./navbar.module.css";
+import {Link as RouterLink} from "react-router-dom"
+// import {Link as RouterLink} from "react-router-dom"
+
 export const Topnavbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -29,10 +33,12 @@ export const Topnavbar = () => {
           paddingBottom={"3px"}
         >
           <Box width="20%">
-            <img
-              src="https://www.bbassets.com/static/staticContent/bb_logo.png"
-              alt="logo"
-            />
+            <Link as={RouterLink} to="/">
+              <img
+                src="https://www.bbassets.com/static/staticContent/bb_logo.png"
+                alt="logo"
+              />
+            </Link>
           </Box>
           <Box width="78%" ml={"2rem"}>
             <Box width="100%" float={"right"}>
@@ -83,7 +89,7 @@ export const Topnavbar = () => {
                     _expanded={{ bg: "white" }}
                     _focus={{ boxShadow: "#84c225" }}
                     focusBorderColor="#84c225"
-                    isInvalid
+                    // isInvalid
                     errorBorderColor="#84c225"
                     borderRadius="0"
                     borderWidth="0.025px"
@@ -94,7 +100,7 @@ export const Topnavbar = () => {
                     // _focus={{ boxShadow: "#84c225" }}
                     variant="outline"
                     focusBorderColor="#84c225"
-                    isInvalid
+                    // isInvalid
                     errorBorderColor="#84c225"
                     borderRadius="0"
                     borderWidth="1px"
@@ -171,11 +177,17 @@ export const Topnavbar = () => {
                       onMouseEnter={onOpen}
                       onMouseLeave={onClose}
                     >
-                      <Flex>
-                        <div className={styles.borderright}>
-                          <MenuItem borderBottom={"1px solid #e8e8e8"}>
-                            Fruits & Vegetables
-                          </MenuItem>
+                      <Flex >
+                        <div
+                          className={styles.borderright}
+                         
+                        
+                        >
+                          <Link as={RouterLink} to="/product">
+                            <MenuItem borderBottom={"1px solid #e8e8e8"}>
+                              Fruits & Vegetables
+                            </MenuItem>
+                          </Link>
                           <MenuItem borderBottom={"1px solid #e8e8e8"}>
                             Foodgrains, Oil & Masala
                           </MenuItem>

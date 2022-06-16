@@ -6,7 +6,7 @@ import { AiOutlineUser } from "react-icons/ai";
 
 export const Navbar = () => {
   return (
-    <Box width="75%" margin={"auto"} border="1px solid black">
+    <Box width="75%" margin={"auto"} border="3px solid black">
       <Box width="40%" float={"right"} border={"1px solid blue"}>
         <Flex
           float={"right"}

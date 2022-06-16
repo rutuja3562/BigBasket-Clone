@@ -10,12 +10,13 @@ import {
 } from "./img";
 import Corouseltwo from "./Corouseltwo";
 import { BestSeller } from "./BestSeller";
-import { Footer } from "../Footer/Footer";
 
 export const Home = () => {
   return (
-    <Box>
-      <Carousel />
+    <Box  width="100%" margin={"auto"}>
+      <Box width={"100%"} margin={"auto"}>
+        <Carousel />
+      </Box>
       <Box width={"75%"} margin={"auto"} mb={"1rem"}>
         <Flex
           marginTop={"-50px"}
@@ -185,9 +186,9 @@ export const Home = () => {
             branded foods reach you in time.
           </Text>
           <Box ml={"3rem"}>
-            <ul >
+            <ul>
               <li>
-                <Text >
+                <Text>
                   Slotted Delivery: Pick the most convenient delivery slot to
                   have your grocery delivered. From early morning delivery for
                   early birds, to late-night delivery for people who work the
@@ -215,9 +216,10 @@ export const Home = () => {
             </ul>
           </Box>
         </Box>
-        <Button variant={"outline"} mt={"1rem"}>Read more...</Button>
+        <Button variant={"outline"} mt={"1rem"}>
+          Read more...
+        </Button>
       </Box>
-      
     </Box>
   );
 };
