@@ -36,7 +36,7 @@ export const Product = () => {
   // ***product component****//
   const [searchParams, setSearchParams] = useSearchParams();
   const [brandValue, setBrandValue] = useState(
-    searchParams.getAll("brand") || []
+    searchParams.getAll("brand")||[]
   );
   const [packSize, setPackSize] = useState(
     searchParams.getAll("quantity") || []
@@ -87,7 +87,7 @@ export const Product = () => {
       d.json()
     );
     setBrandValue(value);
-    if (value == "Fresho") {
+    if (value == "Fresho" ) {
       const filteredArr = data.filter((a) => {
         if (a.brand == "Fresho") {
           return a;
@@ -246,15 +246,22 @@ export const Product = () => {
       },
       { replace: true }
     );
-    // const params = {
-    //   brand: searchParams.getAll("brand"),
-    //   quantity: searchParams.getAll("quantity"),
-    //   price: searchParams.getAll("price"),
-    //   _sort: "price",
-    //   _order: searchParams.get("_order"),
-    // };
-    dispatch(fetchData());
-  }, [setSearchParams, brandValue, priceValue, orderValue, packSize]);
+    const params = {
+      brand: searchParams.getAll("brand"),
+      quantity: searchParams.getAll("quantity"),
+      price: searchParams.getAll("price"),
+      _sort: "price",
+      _order: searchParams.get("_order"),
+    };
+    dispatch(fetchData(params));
+  }, [
+    setSearchParams,
+    searchParams,
+    brandValue,
+    priceValue,
+    orderValue,
+    packSize,
+  ]);
   //   searchParams,
 
   // filtercomponent
@@ -269,7 +276,7 @@ export const Product = () => {
           alt="..."
         />
       </Box>
-      <Box border={"1px"}>
+      <Box border={"1px solid #e8e8e8"}>
         <Flex>
           <Box width={"15%"} textAlign={"left"} m={"1rem"} fontWeight={300}>
             <Text
