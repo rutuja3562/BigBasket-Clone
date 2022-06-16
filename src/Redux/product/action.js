@@ -12,12 +12,12 @@ export const fetchDataAction = (data) => {
   };
 };
 
-export const fetchData = (payload) => (dispatch) => {
+export const fetchData = () => (dispatch) => {
   return axios
     .get("http://localhost:8080/products", {
-      params: {
-        ...payload,
-      },
+    //   params: {
+    //     ...payload,
+    //   },
     })
     .then((res) => {
       dispatch(fetchDataAction(res.data));

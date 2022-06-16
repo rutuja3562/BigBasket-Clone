@@ -16,12 +16,41 @@ export const FilterComponent = () => {
   const [priceValue, setPriceValue] = useState(
     searchParams.getAll("price") || []
   );
-  const [orderValue, setOrderValue] = useState(searchParams.getAll("_order"));
+  const [orderValue, setOrderValue] = useState(
+    searchParams.getAll("_order") || []
+  );
+  const [show, setShow] = useState([]);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const getdata = () => {
+    fetch(" http://localhost:8080/products")
+      .then((response) => response.json())
+      .then((data) => setShow(data));
+  };
+  // console.log(">>>", orderValue);
+
   const HandleSelect = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setOrderValue(e.target.value);
+    if (e.target.value === "low") {
+      const data = [...show].sort((a, b) => {
+        return a.price - b.price;
+      });
+      console.log(data);
+      setShow(data);
+    }
+    if (e.target.value === "high") {
+      const data = [...show].sort((a, b) => {
+        return b.price - a.price;
+      });
+      console.log("dta", data);
+      setShow(data);
+    }
+    // setOrderValue(e.target.value);
   };
 
   const brandValueHandler = (value) => {
@@ -39,26 +68,32 @@ export const FilterComponent = () => {
 
   useEffect(() => {
     setSearchParams(
-      { brand: brandValue, quantity: packSize, price: priceValue , _order:orderValue},
+      {
+        brand: brandValue,
+        quantity: packSize,
+        price: priceValue,
+        _order: orderValue,
+      },
       { replace: true }
     );
-    const params = {
-      brand: searchParams.getAll("brand"),
-      quantity: searchParams.getAll("quantity"),
-      price: searchParams.getAll("price"),
-      _sort: "price",
-      _order: searchParams.get("_order"),
-    };
-    dispatch(fetchData(params));
-  }, [setSearchParams, searchParams, brandValue, priceValue,orderValue, packSize]);
+    // const params = {
+    //   brand: searchParams.getAll("brand"),
+    //   quantity: searchParams.getAll("quantity"),
+    //   price: searchParams.getAll("price"),
+    //   _sort: "price",
+    //   _order: searchParams.get("_order"),
+    // };
+    dispatch(fetchData());
+  }, [setSearchParams, brandValue, priceValue, orderValue, packSize]);
+  //   searchParams,
   return (
     <Box width={"100%"} mt={"1.5rem"}>
       <Box mb="1rem" borderBottom="1px solid #e8e8e8" pb={"1rem"}>
         <Box mb={"2rem"}>
           <select id="cars1" onChange={HandleSelect}>
             <option>price</option>
-            <option value="asc">Low To High</option>
-            <option value="desc">High To Low</option>
+            <option value="low">Low To High</option>
+            <option value="high">High To Low</option>
           </select>
         </Box>
         <CheckboxGroup
