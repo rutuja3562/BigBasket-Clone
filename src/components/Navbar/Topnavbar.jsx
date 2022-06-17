@@ -18,10 +18,15 @@ import { ImLocation2 } from "react-icons/im";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsBasket3 } from "react-icons/bs";
 import styles from "./navbar.module.css";
-import {Link as RouterLink} from "react-router-dom"
+import {Link as RouterLink, useNavigate} from "react-router-dom"
+import { useSelector } from "react-redux";
+
 // import {Link as RouterLink} from "react-router-dom"
 
+
 export const Topnavbar = () => {
+  const navigate=useNavigate();
+  const cart = useSelector((state)=>state.products.cart)
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box width={"75%"} margin="auto">
@@ -114,11 +119,13 @@ export const Topnavbar = () => {
                   </Button>
                 </Flex>
                 <Flex
-                  width="15%"
+                  width="16%"
                   // justifyContent={"space-between"}
-
                   bg={" #e8e8e8"}
                   height={"60px"}
+                  onClick={() => {
+                    navigate("/cart");
+                  }}
                 >
                   <Flex
                     ml={"20px"}
@@ -134,7 +141,7 @@ export const Topnavbar = () => {
                     flexDirection={"column"}
                   >
                     <Text fontSize={"12px"}>My Basket</Text>
-                    <Text>{0}Items</Text>
+                    <Text>{cart.length} Items</Text>
                   </Flex>
                 </Flex>
               </Flex>
@@ -177,12 +184,8 @@ export const Topnavbar = () => {
                       onMouseEnter={onOpen}
                       onMouseLeave={onClose}
                     >
-                      <Flex >
-                        <div
-                          className={styles.borderright}
-                         
-                        
-                        >
+                      <Flex>
+                        <div className={styles.borderright}>
                           <Link as={RouterLink} to="/product">
                             <MenuItem borderBottom={"1px solid #e8e8e8"}>
                               Fruits & Vegetables

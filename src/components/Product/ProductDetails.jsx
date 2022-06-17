@@ -1,55 +1,48 @@
 import {
   Box,
-  chakra,
-  Container,
   Stack,
   Text,
   Image,
   Flex,
-  VStack,
-  Button,
-  Heading,
-  SimpleGrid,
-  StackDivider,
   useColorModeValue,
-  HStack,
   Link,
   ListItem,
   UnorderedList,
-  textDecoration,
+  Button,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getSingleProduct } from "../../Redux/product/action";
-// import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-// import { Icon, createIcon } from "@chakra-ui/react";
-// import { CircleIcon, StarIcon } from "@chakra-ui/icons";
+import {
+  addtoCart,
+  addtocartaction,
+  getSingleProduct,
+} from "../../Redux/product/action";
 import { MdLocalShipping } from "react-icons/md";
 import { Link as RouterLink } from "react-router-dom";
 export const ProductDetails = () => {
   const dispatch = useDispatch();
   const currentProduct = useSelector((state) => state.products.currentProduct);
-  console.log("curr", currentProduct);
+  // console.log("curr", currentProduct);
   const { id } = useParams();
-  console.log("LL", id);
   useEffect(() => {
     dispatch(getSingleProduct(id));
-    // console.log("ID",id)
-  }, [dispatch, id]);
-
-  //  const handleAddproduct = () => {
-  //    // console.log("***current", currentProduct);
-  //    currentProduct && dispatch(addCart(currentProduct));
-  //  };
+  }, []);
+  const handleAddproduct = (currentProduct) => {
+    // console.log("curr",currentProduct)
+     dispatch(addtocartaction(currentProduct));
+  };
+ 
   return (
-    <Box width={"75%"} margin={"auto"} border="1px solid #e8e8e8">
-      <Flex
-        justifyContent={"space-between"}
-        // columns={{ base: 1, lg: 2 }}
-        // spacing={{ base: 8, md: 10 }}
-        // py={{ base: 18, md: 24 }}
-      >
+    <Box
+      width={"75%"}
+      margin={"auto"}
+      border="1px solid #e8e8e8"
+      mt={"3rem"}
+      mb={"3rem"}
+      p={"1rem 1rem 2rem 0rem "}
+    >
+      <Flex justifyContent={"space-between"}>
         <Box
           borderRight={"1px solid #e8e8e8"}
           width="25%"
@@ -80,7 +73,6 @@ export const ProductDetails = () => {
             fontSize={"12px"}
             fontWeight={"380"}
             ml={"1.5rem"}
-            // _hover={{ bg: "white" }}
             mb={"1rem"}
           >
             <ListItem _hover={{ color: "#84c225" }} mb={"0.25rem"}>
@@ -134,16 +126,11 @@ export const ProductDetails = () => {
               w={"100%"}
               // border="1px solid #e8e8e8"
               mt={"18%"}
-              // h={{ base: "100%", sm: "400px", lg: "500px" }}
             />
           </Flex>
         </Box>
-        <Box border={"1px"} width="35%">
-          <Stack
-            spacing={{ base: 6, md: 10 }}
-            border="1px solid red"
-            textAlign={"left"}
-          >
+        <Box border={"1px solid #e8e8e8"} width="35%" padding={"1rem"}>
+          <Stack spacing={{ base: 6, md: 4 }} textAlign={"left"}>
             <Box as={"header"}>
               <Text
                 mt={"20%"}
@@ -160,49 +147,58 @@ export const ProductDetails = () => {
                 fontSize={"16px"}
                 pb="0.25rem"
               >
-                {currentProduct.brand} - {currentProduct.title}
+                {currentProduct.brand} {"  "} {currentProduct.title}
               </Text>
-              <Text
-                // color={useColorModeValue("gray.900", "gray.400")}
-                fontWeight={400}
-                fontSize={"16px"}
-              >
+              <Text fontWeight={400} fontSize={"16px"}>
                 MRP : {""}{" "}
                 <span className="linethrough">
                   Rs{0.5 * currentProduct.price}
                 </span>
               </Text>
-              <Text fontWeight={400} fontSize={"20px"}>
+              <Text fontWeight={400} fontSize={"18px"}>
                 Price : ₹ {currentProduct.price}
               </Text>
             </Box>
-            <Box  margin={"auto"} border="1px">
-              <Button>1</Button>
+            <Box margin={"auto"}>
+              <Button
+                mr={"5px"}
+                bg={useColorModeValue("white")}
+                color={useColorModeValue("gray.900")}
+                rounded="0"
+                border="1px solid #84c225"
+              >
+                1
+              </Button>
               <Link as={RouterLink} to={"/cart"}>
                 <Button
                   rounded={"none"}
                   w={"50%"}
                   margin="auto"
-                  py={"0"}
-                  bg={useColorModeValue("gray.900", "gray.50")}
+                  p={"5px"}
+                  mr={"5px"}
+                  border="1px solid #84c225"
+                  bg={useColorModeValue("#84c225")}
                   color={useColorModeValue("white", "gray.900")}
-                  textTransform={"uppercase"}
-                  _hover={{
-                    transform: "translateY(2px)",
-                    boxShadow: "lg",
-                  }}
-                  // onClick={handleAddproduct}
+                  onClick={()=>handleAddproduct(currentProduct)}
                 >
                   Add to cart
                 </Button>
-
-                </Link>
-                <Button>Save</Button>
+              </Link>
+              <Button
+                ml="5px"
+                bg={useColorModeValue("white")}
+                color={useColorModeValue("gray.900")}
+                rounded="0"
+                border="1px solid #84c225"
+              >
+                SAVE
+              </Button>
             </Box>
             <Stack
               direction="row"
               alignItems="center"
-              justifyContent={"center"}
+              //  border="1px"
+              //  marginTop={"-20px"}
             >
               <MdLocalShipping />
               <Text>2-3 business days delivery</Text>

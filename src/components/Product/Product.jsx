@@ -128,74 +128,78 @@ export const Product = () => {
 
   const packSizeHandler = async (value) => {
     setPackSize(value);
+    // console.log(value,typeof(value))
     // const brandValueHandler = async (value) => {
     const data = await fetch("http://localhost:8080/products").then((d) =>
       d.json()
     );
     // setBrandValue(value);
-    if (value == "100 g") {
+    if (value == "100") {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "100 g") {
+        // console.log(Number(a.quantity))
+        // console.log(a.quantity,"???",typeof(a.quantity))
+        // console.log(a.quantity===100);
+        if (a.quantity == "100") {
           return a;
         }
       });
       setProducts(filteredArr);
     }
-    if (value == "250 g") {
+    if (value == 250) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "250 g") {
+        if (a.quantity == 250 ) {
           return a;
         }
       });
       setProducts(filteredArr);
     }
-    if (value == "500 g") {
+    if (value == 500) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "500 g") {
+        if (a.quantity == 500 ) {
           return a;
         }
       });
       setProducts(filteredArr);
     }
-    if (value == "1 kg") {
+    if (value == 1) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "1 kg") {
+        if (a.quantity == 1) {
           return a;
         }
       });
       setProducts(filteredArr);
       // }
-    } else if (value == "2 kg") {
+    } else if (value == 2 ) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "2 kg") {
+        if (a.quantity == 2 ) {
           return a;
         }
       });
       setProducts(filteredArr);
-    } else if (value == "1 pc") {
+    } else if (value == 1) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "1 pc") {
+        if (a.quantity == 1) {
           return a;
         }
       });
       setProducts(filteredArr);
-    } else if (value == "2 pcs") {
+    } else if (value == 2 ) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "2 pcs") {
+        if (a.quantity == 2) {
           return a;
         }
       });
       setProducts(filteredArr);
-    } else if (value == "2 items") {
+    } else if (value == 2 ) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "2 items") {
+        if (a.quantity == 2 ) {
           return a;
         }
       });
       setProducts(filteredArr);
-    } else if (value == "40 cm") {
+    } else if (value == 40 ) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == "40 cm") {
+        if (a.quantity == 40 ) {
           return a;
         }
       });
@@ -318,10 +322,10 @@ export const Product = () => {
                       fontSize={"12px"}
                       fontWeight={"375"}
                     >
-                      <Checkbox value="Fresho">Fresho</Checkbox>
                       <Checkbox value="Organic">Organic</Checkbox>
                       <Checkbox value="Hoovu Fresh">Hoovu Fresh</Checkbox>
                       <Checkbox value="Brotos">Brotos</Checkbox>
+                      <Checkbox value="Fresho">Fresho</Checkbox>
                     </VStack>
                   </CheckboxGroup>
                 </Box>
@@ -340,14 +344,11 @@ export const Product = () => {
                       fontSize={"12px"}
                       fontWeight={"375"}
                     >
-                      <Checkbox value="100 g">100 g</Checkbox>
-                      <Checkbox value="250 g">250 g</Checkbox>
-                      <Checkbox value="1 kg">1 kg</Checkbox>
-                      <Checkbox value="2 kg">2 kg</Checkbox>
-                      <Checkbox value="1 pc"> 1 pc</Checkbox>
-                      <Checkbox value="2 pcs">2 pcs</Checkbox>
-                      <Checkbox value="40 cm">40cm</Checkbox>
-                      <Checkbox value="2 items">2 items</Checkbox>
+                      <Checkbox value="1">1 kg</Checkbox>
+                      <Checkbox value="2">2 pcs</Checkbox>
+                      <Checkbox value="40">40cm</Checkbox>
+                      <Checkbox value="100">100 g</Checkbox>
+                      <Checkbox value="250">250 g</Checkbox>
                     </VStack>
                   </CheckboxGroup>
                 </Box>
@@ -388,19 +389,12 @@ export const Product = () => {
                 fontSize={"20px"}
                 fontWeight={400}
               >
-                Fruits & Vegetables ({product.length})
+                Fruits & Vegetables ({products.length})
               </Text>
             </Stack>
             <Flex flexWrap={"wrap"} borderTop={"1px solid #e8e8e8"}>
               {products.map((e) => {
-      
-                return (
-                  <ProductComponent
-                    key={e._id}
-                    props={e}
-                  
-                  />
-                );
+                return <ProductComponent key={e._id} props={e} />;
               })}
             </Flex>
           </Box>

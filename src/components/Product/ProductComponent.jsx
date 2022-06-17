@@ -1,16 +1,24 @@
-import { Box, Text, Stack, Image, Flex, Center } from "@chakra-ui/react";
+import { Box, Text, Stack, Image, Flex, Center, Button } from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 import { useNavigate } from "react-router";
 import "../Home/home.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addtocartaction } from "../../Redux/product/action";
 export const ProductComponent = ({ props }) => {
+  // console.log("props",props)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const handleCart=(props)=>{
+    console.log(props)
+    dispatch(addtocartaction(props))
+  }
   return (
     <Box
       width={"33%"}
       // border="1px solid blue"
     >
-      <Link to={`/products/${props.id}`}>
+     
         <Box
           className="transition"
           role={"group"}
@@ -28,12 +36,14 @@ export const ProductComponent = ({ props }) => {
           //   // `products/${e.id}`;
           // }}
         >
+         <Link to={`/products/${props.id}`}>
           <Flex
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
             //   border="1px solid transparent"
           >
+
             <Image
               rounded={"lg"}
               objectFit={"cover"}
@@ -41,6 +51,7 @@ export const ProductComponent = ({ props }) => {
               src={props.imgUrl}
             />
           </Flex>
+          </Link>
           <Stack textAlign={"left"}>
             <Text color={"gray.500"} fontSize={"sm"}>
               {props.brand}
@@ -55,14 +66,14 @@ export const ProductComponent = ({ props }) => {
               <Text color={"black"} fontSize={"sm"}>
                 Rs {props.price}
               </Text>
-              <Text
-                textDecoration={"line-through"}
-                fontSize={"sm"}
-                color={"black"}
-              >
-                <span className="linethrough">Mrp</span> {0.5 * props.price}
+              <Text fontSize={"12px"} color={"black"}>
+                MRP{" "}
+                <span className="linethrough" textDecoration={"line-through"}>
+                  Rs{0.5 * props.price}
+                </span>
               </Text>
             </Stack>
+            <Button variant={"outline"} p="0" onClick={()=>handleCart(props)}>Add to cart</Button>
             <Stack
               direction="row"
               alignItems="center"
@@ -74,10 +85,9 @@ export const ProductComponent = ({ props }) => {
                 your home
               </Text>
             </Stack>
-            ;
           </Stack>
         </Box>
-      </Link>
+      
     </Box>
   );
 };

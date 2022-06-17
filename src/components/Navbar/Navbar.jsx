@@ -3,8 +3,11 @@ import { Box, Flex, Text, Button, Input } from "@chakra-ui/react";
 import { PhoneIcon, SearchIcon } from "@chakra-ui/icons";
 import { ImLocation2 } from "react-icons/im";
 import { AiOutlineUser } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
+  const cart = useSelector((state)=>state.products.cart)
+
   return (
     <Box width="75%" margin={"auto"} border="3px solid black">
       <Box width="40%" float={"right"} border={"1px solid blue"}>
