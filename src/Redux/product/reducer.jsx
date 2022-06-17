@@ -1,9 +1,9 @@
 import {
   ADD_TO_CART,
-  DELETE_CART,
-  FETCH_CART,
   FETCH_DATA,
+  FETCH_TO_CART,
   GET_SINGLE_PRODUCT,
+  REMOVE_TO_CART,
 } from "./action";
 
 const initState = {
@@ -31,14 +31,27 @@ export const productReducer = (state = initState, action) => {
         cart: [...state.cart, action.payload],
       };
     }
-    case FETCH_CART: {
+    case FETCH_TO_CART: {
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart:[ ...action.payload],
       };
     }
-    case DELETE_CART:
-      return { cart: state.cart.filter((e) => e.id !== action?.payload?.id) };
+    case REMOVE_TO_CART: {
+      return {
+        ...state,
+        cart: action.payload,
+      };
+    }
+
+    // case FETCH_CART: {
+    //   return {
+    //     ...state,
+    //     cart: [...state.cart, action.payload],
+    //   };
+    // }
+    // case DELETE_CART:
+    //   return { cart: state.cart.filter((e) => e.id !== action?.payload?.id) };
     default:
       return state;
   }

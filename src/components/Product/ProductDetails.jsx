@@ -29,10 +29,9 @@ export const ProductDetails = () => {
     dispatch(getSingleProduct(id));
   }, []);
   const handleAddproduct = (currentProduct) => {
-    // console.log("curr",currentProduct)
-     dispatch(addtocartaction(currentProduct));
+    dispatch(addtoCart(currentProduct));
   };
- 
+
   return (
     <Box
       width={"75%"}
@@ -151,12 +150,13 @@ export const ProductDetails = () => {
               </Text>
               <Text fontWeight={400} fontSize={"16px"}>
                 MRP : {""}{" "}
-                <span className="linethrough">
-                  Rs{0.5 * currentProduct.price}
-                </span>
+                <span className="linethrough">Rs{currentProduct.price}</span>
               </Text>
               <Text fontWeight={400} fontSize={"18px"}>
-                Price : ₹ {currentProduct.price}
+                Price :{" "}
+                {Math.floor(
+                  currentProduct.price - (10 * currentProduct.price) / 100
+                )}
               </Text>
             </Box>
             <Box margin={"auto"}>
@@ -179,7 +179,7 @@ export const ProductDetails = () => {
                   border="1px solid #84c225"
                   bg={useColorModeValue("#84c225")}
                   color={useColorModeValue("white", "gray.900")}
-                  onClick={()=>handleAddproduct(currentProduct)}
+                  onClick={() => handleAddproduct(currentProduct)}
                 >
                   Add to cart
                 </Button>

@@ -18,29 +18,20 @@ import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 export const Product = () => {
-  // ***product component****//
-// const dispatch = useDispatch();
-  // const [searchParams, setSearchParams] = useSearchParams();
   const product = useSelector((state) => state);
-  // console.log(">>>",product)
   const dispatch = useDispatch();
   useEffect(() => {
     if (product?.length === 0) {
-  // let params = {
-  //   brand: searchParams.getAll("brand"),
-  //   quantity: searchParams.getAll("quantity"),
-  //   _sort: searchParams.getAll("price"),
-  //   _order: searchParams.getAll("_order"),
-  //     // };
+
       dispatch(fetchData());
     }
-  },[dispatch, product?.length]);
+  }, [dispatch, product?.length]);
 
   // ***product component****//
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [brandValue, setBrandValue] = useState(
-    searchParams.getAll("brand")||[]
+    searchParams.getAll("brand") || []
   );
   const [packSize, setPackSize] = useState(
     searchParams.getAll("quantity") || []
@@ -91,7 +82,7 @@ export const Product = () => {
       d.json()
     );
     setBrandValue(value);
-    if (value == "Fresho" ) {
+    if (value == "Fresho") {
       const filteredArr = data.filter((a) => {
         if (a.brand == "Fresho") {
           return a;
@@ -147,7 +138,7 @@ export const Product = () => {
     }
     if (value == 250) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == 250 ) {
+        if (a.quantity == 250) {
           return a;
         }
       });
@@ -155,7 +146,7 @@ export const Product = () => {
     }
     if (value == 500) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == 500 ) {
+        if (a.quantity == 500) {
           return a;
         }
       });
@@ -169,9 +160,9 @@ export const Product = () => {
       });
       setProducts(filteredArr);
       // }
-    } else if (value == 2 ) {
+    } else if (value == 2) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == 2 ) {
+        if (a.quantity == 2) {
           return a;
         }
       });
@@ -183,23 +174,23 @@ export const Product = () => {
         }
       });
       setProducts(filteredArr);
-    } else if (value == 2 ) {
+    } else if (value == 2) {
       const filteredArr = data.filter((a) => {
         if (a.quantity == 2) {
           return a;
         }
       });
       setProducts(filteredArr);
-    } else if (value == 2 ) {
+    } else if (value == 2) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == 2 ) {
+        if (a.quantity == 2) {
           return a;
         }
       });
       setProducts(filteredArr);
-    } else if (value == 40 ) {
+    } else if (value == 40) {
       const filteredArr = data.filter((a) => {
-        if (a.quantity == 40 ) {
+        if (a.quantity == 40) {
           return a;
         }
       });
@@ -270,11 +261,7 @@ export const Product = () => {
     orderValue,
     packSize,
   ]);
-  //   searchParams,
-
-  // filtercomponent
-
-  //filter component
+ 
   return (
     <Box width={"75%"} margin="auto" mt="1rem">
       <ProductSlider />
@@ -403,3 +390,9 @@ export const Product = () => {
     </Box>
   );
 };
+      // let params = {
+      //   brand: searchParams.getAll("brand"),
+      //   quantity: searchParams.getAll("quantity"),
+      //   _sort: searchParams.getAll("price"),
+      //   _order: searchParams.getAll("_order"),
+      //     // };

@@ -270,3 +270,12 @@
     quantity: "80 g",
   },
 ];
+
+//  <Tr
+//                 fontSize={14}
+//                 textAlign={"left"}
+//                 width="100%"
+//                 bg="#e8e8e8"
+//               >
+//                 Fruits & Vegetables {cart.length} items {0}
+//               </Tr>

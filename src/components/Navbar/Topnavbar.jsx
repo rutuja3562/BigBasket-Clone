@@ -18,15 +18,15 @@ import { ImLocation2 } from "react-icons/im";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsBasket3 } from "react-icons/bs";
 import styles from "./navbar.module.css";
-import {Link as RouterLink, useNavigate} from "react-router-dom"
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { CartLength } from "../CartLength";
 
 // import {Link as RouterLink} from "react-router-dom"
 
-
 export const Topnavbar = () => {
-  const navigate=useNavigate();
-  const cart = useSelector((state)=>state.products.cart)
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.products.cart);
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box width={"75%"} margin="auto">
@@ -141,7 +141,9 @@ export const Topnavbar = () => {
                     flexDirection={"column"}
                   >
                     <Text fontSize={"12px"}>My Basket</Text>
-                    <Text>{cart.length} Items</Text>
+                    <Flex>
+                      <CartLength /> <Text ml={2}>Items</Text>
+                    </Flex>
                   </Flex>
                 </Flex>
               </Flex>
