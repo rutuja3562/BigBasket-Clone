@@ -14,23 +14,37 @@ export const fetchDataAction = (data) => {
 
 export const fetchData = (payload) => (dispatch) => {
   return axios
-    .get("http://localhost:8080/products", {
+    .get("http://localhost:8080/products"
+     ,{
       params: {
         ...payload,
       },
-    })
+    }
+    )
     .then((res) => {
+      // console.log("..res..",res.data)
       dispatch(fetchDataAction(res.data));
     })
-    .catch((e) => console.log(e));
+    .catch((e) => console.log("UU",e));
 };
 
-export const getSingleProductAction = (data) => {
+export const getSingleProductAction = (payload) => {
   return {
     type: GET_SINGLE_PRODUCT,
-    payload: data,
+    payload
   };
 };
+
+export const getSingleProduct = (id) => (dispatch) => {
+  return axios
+    .get(`http://localhost:8080/products/${id}`)
+    .then((res) => {
+      // console.log("res...",res.data);
+      dispatch(getSingleProductAction(res.data));
+    })
+    .catch((e) => console.log("ERR", e));
+};
+
 
 export const addtocartction = (data) => ({
   type: ADD_TO_CART,

@@ -2,7 +2,7 @@ import { ADD_TO_CART, FETCH_DATA, GET_SINGLE_PRODUCT } from "./action"
 
 const initState = {
   product: [],
-  currentProduct:{},
+  currentProduct: {},
   cart: [],
 };
 export const productReducer = (state = initState, action) => {

@@ -15,25 +15,29 @@ import { ProductComponent } from "./ProductComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../Redux/product/action";
 import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const Product = () => {
   // ***product component****//
-
+// const dispatch = useDispatch();
   // const [searchParams, setSearchParams] = useSearchParams();
-  // const product = useSelector((state) => state.products.product);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (product?.length === 0) {
+  const product = useSelector((state) => state);
+  // console.log(">>>",product)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (product?.length === 0) {
   // let params = {
   //   brand: searchParams.getAll("brand"),
   //   quantity: searchParams.getAll("quantity"),
   //   _sort: searchParams.getAll("price"),
   //   _order: searchParams.getAll("_order"),
   //     // };
-  //     dispatch(fetchData());
-  //   }
-  // }, [dispatch, product?.length]);
+      dispatch(fetchData());
+    }
+  },[dispatch, product?.length]);
+
   // ***product component****//
+  const navigate=useNavigate()
   const [searchParams, setSearchParams] = useSearchParams();
   const [brandValue, setBrandValue] = useState(
     searchParams.getAll("brand")||[]
@@ -47,8 +51,8 @@ export const Product = () => {
   const [orderValue, setOrderValue] = useState(
     searchParams.getAll("_order") || []
   );
-  const [product, setProduct] = useState([]);
-  const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     getdata();
@@ -57,7 +61,7 @@ export const Product = () => {
   const getdata = () => {
     fetch("http://localhost:8080/products")
       .then((response) => response.json())
-      .then((data) => setProduct(data));
+      .then((data) => setProducts(data));
   };
 
   //*** Sort by price***//
@@ -65,18 +69,18 @@ export const Product = () => {
   const HandleSelect = (e) => {
     setOrderValue(e.target.value);
     if (e.target.value === "low") {
-      const data = [...product].sort((a, b) => {
+      const data = [...products].sort((a, b) => {
         return a.price - b.price;
       });
       // console.log(data);
-      setProduct(data);
+      setProducts(data);
     }
     if (e.target.value === "high") {
-      const data = [...product].sort((a, b) => {
+      const data = [...products].sort((a, b) => {
         return b.price - a.price;
       });
       // console.log("dta", data);
-      setProduct(data);
+      setProducts(data);
     }
   };
 
@@ -93,30 +97,30 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "Organic") {
       const filteredArr = data.filter((a) => {
         if (a.brand == "Organic") {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "Hoovu Fresh") {
       const filteredArr = data.filter((a) => {
         if (a.brand == "Hoovu Fresh") {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "Brotos") {
       const filteredArr = data.filter((a) => {
         if (a.brand == "Brotos") {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else {
-      setProduct(data);
+      setProducts(data);
     }
   };
 
@@ -135,7 +139,7 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     }
     if (value == "250 g") {
       const filteredArr = data.filter((a) => {
@@ -143,7 +147,7 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     }
     if (value == "500 g") {
       const filteredArr = data.filter((a) => {
@@ -151,7 +155,7 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     }
     if (value == "1 kg") {
       const filteredArr = data.filter((a) => {
@@ -159,7 +163,7 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
       // }
     } else if (value == "2 kg") {
       const filteredArr = data.filter((a) => {
@@ -167,28 +171,28 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "1 pc") {
       const filteredArr = data.filter((a) => {
         if (a.quantity == "1 pc") {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "2 pcs") {
       const filteredArr = data.filter((a) => {
         if (a.quantity == "2 pcs") {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "2 items") {
       const filteredArr = data.filter((a) => {
         if (a.quantity == "2 items") {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "40 cm") {
       const filteredArr = data.filter((a) => {
         if (a.quantity == "40 cm") {
@@ -196,9 +200,9 @@ export const Product = () => {
         }
       });
 
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else {
-      setProduct(data);
+      setProducts(data);
     }
   };
 
@@ -216,23 +220,23 @@ export const Product = () => {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "51-100") {
       const filteredArr = data.filter((a) => {
         if (a.price > 51 && a.price <= 100) {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else if (value == "101-150") {
       const filteredArr = data.filter((a) => {
         if (a.price > 101 && a.price <= 150) {
           return a;
         }
       });
-      setProduct(filteredArr);
+      setProducts(filteredArr);
     } else {
-      setProduct(data);
+      setProducts(data);
     }
   };
 
@@ -388,8 +392,15 @@ export const Product = () => {
               </Text>
             </Stack>
             <Flex flexWrap={"wrap"} borderTop={"1px solid #e8e8e8"}>
-              {product.map((e) => {
-                return <ProductComponent key={e._id} props={e} />;
+              {products.map((e) => {
+      
+                return (
+                  <ProductComponent
+                    key={e._id}
+                    props={e}
+                  
+                  />
+                );
               })}
             </Flex>
           </Box>
