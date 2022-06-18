@@ -102,9 +102,13 @@ export const Footer = () => {
           </Flex>
         </Stack>
       </Flex>
-      <Flex alignItems={"center"} >
-        <Text color={"#84c225"} size={"16px"} mr={"2rem"}>Payment Otions</Text>
-        <Box><img src={footer} alt="" /></Box>
+      <Flex alignItems={"center"}>
+        <Text color={"#84c225"} size={"16px"} mr={"2rem"}>
+          Payment Otions
+        </Text>
+        <Box>
+          <img src={footer} alt="" />
+        </Box>
       </Flex>
     </Box>
   );

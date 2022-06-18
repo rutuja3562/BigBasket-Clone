@@ -63,11 +63,13 @@ export const fetchcartaction = (data) => ({
   payload: data,
 });
 
-export const fetchtoCart = (payload) => (dispatch) => {
+export const fetchtoCart = () => (dispatch) => {
   axios.get("http://localhost:7005/vegetablecart").then((res) => {
     // console.log("get", res.data);
     dispatch(fetchcartaction(res.data));
-  });
+  }).catch((e)=>{
+    console.log(e)
+  })
 };
 
 export const removeItemAction = (data) => {
@@ -83,6 +85,8 @@ export const removeItem = (id) => (dispatch) => {
     .then((res) => {
       // console.log(res.data);
       dispatch(removeItemAction(res.data));
+    }).then((r)=>{
+      dispatch(fetchtoCart());
     })
     .catch((err) => {
       console.log(err);

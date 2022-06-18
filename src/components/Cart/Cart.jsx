@@ -16,14 +16,17 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
+import { Navigate, useNavigate } from "react-router";
 export const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.products.cart);
+  
+  // const [cartLength, setCartLength] = useState(cart.length);
+  const [count, setCount] = useState(1);
   useEffect(() => {
     dispatch(fetchtoCart());
-  }, [dispatch]);
-  const cart = useSelector((state) => state.products.cart);
-  const [cartLength, setCartLength] = useState(cart.length);
-  const [count, setCount] = useState(1);
+  }, [dispatch,cart.length]);
   const a = [];
   const handleDelet = (id) => {
     dispatch(removeItem(id));
@@ -69,14 +72,15 @@ export const Cart = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {cart.map((e) => {
+              {cart?.map((e) => {
                 {
-                  Total = Total + e.price;
+                  Total = Total+Math.floor(Total + e.price);
+                  
                 }
                 {
-                  saved =
-                    saved +
-                    Math.floor(e.price - (e.price - (10 * e.price) / 100));
+                  saved = Math.floor(
+                    saved + (e.price - (e.price - (10 * e.price) / 100))
+                  );
                 }
                 return (
                   <Tr
@@ -90,9 +94,9 @@ export const Cart = () => {
                       {e.title}
                     </Td>
                     <Td>
-                      Rs {Math.floor(e.price - (10 * e.price) / 100)}
+                      Rs {Total-saved}
                       <br></br>
-                      Rs {Math.floor(e.price)}
+                      Rs {Total}
                     </Td>
                     <Td>
                       <Button
@@ -113,14 +117,14 @@ export const Cart = () => {
                         +
                       </Button>
                     </Td>
-                    <Td>Rs {e.price * 1}</Td>
+                    <Td>Rs {Total-saved}</Td>
                     <Td>
                       <CloseIcon onClick={() => handleDelet(e._id)} />
                     </Td>
                     <Td>
                       {" "}
                       Rs{" "}
-                      {Math.floor(e.price - (e.price - (10 * e.price) / 100))}
+                      {saved}
                     </Td>
                   </Tr>
                 );
@@ -134,8 +138,7 @@ export const Cart = () => {
               variant={"outline"}
               float={"left"}
               onClick={() => {
-                cart.length = 0;
-                setCartLength(0);
+                
               }}
             >
               Empty Basket
@@ -154,7 +157,7 @@ export const Cart = () => {
                 <Text>Delivery Charges</Text>
               </Box>
               <Box>
-                <Text>Rs {Math.floor(Total)}</Text>
+                <Text>Rs {Total-saved}</Text>
                 <Text>***</Text>
               </Box>
               <Box borderLeft={"1px solid #e8e8e8"} color="red" pl="2px">
@@ -174,11 +177,11 @@ export const Cart = () => {
               </Heading>
               <Heading as={"h6"} fontWeight="250">
                 {" "}
-                RS {Math.floor(Total)}
+                RS {Math.floor(Total-saved)}
               </Heading>
             </Flex>
             <Box float={"right"}>
-              <Button variant={"outline"}> CheckOut</Button>
+              <Button variant={"outline"} onClick={()=>navigate("/checkout")}> CheckOut</Button>
             </Box>
           </Box>
         </Flex>
