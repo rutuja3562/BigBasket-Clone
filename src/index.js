@@ -1,5 +1,5 @@
 import React from "react";
-// json-server db.json --watch --port 8080   
+// json-server db.json --watch --port 8080
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -8,13 +8,16 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
+import { AuthContextProvider } from "./components/Context/AuthContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider>
         <Provider store={store}>
-          <App />
+          <AuthContextProvider>
+            <App />
+          </AuthContextProvider>
         </Provider>
       </ChakraProvider>
     </BrowserRouter>

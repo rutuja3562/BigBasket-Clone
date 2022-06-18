@@ -21,6 +21,7 @@ import styles from "./navbar.module.css";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { CartLength } from "../CartLength";
+import { LogedIn } from "../Login/LogedIn";
 
 // import {Link as RouterLink} from "react-router-dom"
 
@@ -75,7 +76,9 @@ export const Topnavbar = () => {
                     <Box mr={"0.5rem"}>
                       <AiOutlineUser size="16px" />
                     </Box>
-                    <Text>BigBasketeer</Text>
+                    <Box>
+                      <LogedIn />
+                    </Box>
                   </Flex>
                 </Box>
               </Flex>

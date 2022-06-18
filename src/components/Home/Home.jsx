@@ -10,10 +10,12 @@ import {
 } from "./img";
 import Corouseltwo from "./Corouseltwo";
 import { BestSeller } from "./BestSeller";
+import { Topnavbar } from "../Navbar/Topnavbar";
 
 export const Home = () => {
   return (
     <Box  width="100%" margin={"auto"}>
+    <Topnavbar/>
       <Box width={"100%"} margin={"auto"}>
         <Carousel />
       </Box>

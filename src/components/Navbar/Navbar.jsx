@@ -1,12 +1,15 @@
-import React from "react";
+import React  from "react";
 import { Box, Flex, Text, Button, Input } from "@chakra-ui/react";
 import { PhoneIcon, SearchIcon } from "@chakra-ui/icons";
 import { ImLocation2 } from "react-icons/im";
 import { AiOutlineUser } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import { Signup } from "../Signup/Signup";
+import { useState } from "react";
 
 export const Navbar = () => {
-  const cart = useSelector((state)=>state.products.cart)
+  const cart = useSelector((state) => state.products.cart);
+  const [login, setLogin] = useState(true);
 
   return (
     <Box width="75%" margin={"auto"} border="3px solid black">
@@ -38,7 +41,9 @@ export const Navbar = () => {
               <Box mr={"0.5rem"}>
                 <AiOutlineUser size="16px" />
               </Box>
-              <Text>BigBasketeer</Text>
+              <Box>
+              <Signup/>
+              </Box>
             </Flex>
           </Box>
         </Flex>
