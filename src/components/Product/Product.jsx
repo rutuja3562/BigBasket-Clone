@@ -100,9 +100,9 @@ export const Product = () => {
   //*** Filter by Brand***//
 
   const brandValueHandler = async (value) => {
-    const data = await fetch("http://localhost:8080/products").then((d) =>
-      d.json()
-    );
+    const data = await fetch(
+      "https://rbigbasket.herokuapp.com/collection"
+    ).then((d) => d.json());
     setBrandValue(value);
     if (value == "Fresho") {
       const filteredArr = data.filter((a) => {
@@ -143,9 +143,9 @@ export const Product = () => {
     setPackSize(value);
     // console.log(value,typeof(value))
     // const brandValueHandler = async (value) => {
-    const data = await fetch("http://localhost:8080/products").then((d) =>
-      d.json()
-    );
+    const data = await fetch(
+      "https://rbigbasket.herokuapp.com/collection"
+    ).then((d) => d.json());
     // setBrandValue(value);
     if (value == "100") {
       const filteredArr = data.filter((a) => {
@@ -227,9 +227,9 @@ export const Product = () => {
 
   const priceHandler = async (value) => {
     setPriceValue(value);
-    const data = await fetch(" http://localhost:8080/products").then((d) =>
-      d.json()
-    );
+    const data = await fetch(
+      "https://rbigbasket.herokuapp.com/collection"
+    ).then((d) => d.json());
 
     if (value == "0-50") {
       const filteredArr = data.filter((a) => {
