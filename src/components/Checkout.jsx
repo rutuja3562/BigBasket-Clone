@@ -21,7 +21,6 @@ export const Checkout = () => {
         mb={"3rem"}
         p={"2rem"}
         border={"1px solid #e8e8e8"}
-        //   border={"1px solid black"}
         bg="#f6f6f6"
         pb="5rem"
       >
@@ -154,7 +153,6 @@ export const Checkout = () => {
                   _expanded={{ bg: "white" }}
                   _focus={{ boxShadow: "#84c225" }}
                   focusBorderColor="#84c225"
-                  // isInvalid
                   colorScheme="white"
                   errorBorderColor="#84c225"
                   borderRadius="0"
