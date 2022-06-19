@@ -29,11 +29,11 @@ export const Payment = () => {
   const cart = useSelector((state) => state.products.cart);
   const total = cart.reduce(function (acc, cv) {
     console.log(cv.price);
-    return acc + cv.price;
+    return acc + Math.floor(cv.price);
   }, 0);
   var saved = 0;
   for (let e of cart) {
-    saved = saved + (e.price - (e.price - (10 * e.price) / 100));
+    saved = saved + (Math.floor(e.price )- Math.floor(e.price - (10 * e.price) / 100));
   }
   return (
     <Box width={"100%"}>

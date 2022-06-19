@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Button, Flex, Input, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
@@ -7,6 +14,7 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router";
 import { LogedIn } from "../Login/LogedIn";
 export const Signup = () => {
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const { auth, handleAuth } = useContext(AuthContext);
@@ -20,17 +28,17 @@ export const Signup = () => {
     setTimeout(() => {
       if (e.target.value == random) {
         alert("Login Sucessful");
-         navigate("/");
+        //  navigate("/product");
       } else {
         alert("Login Unsucessful");
-       
       }
     }, 4000);
   };
+  
   return (
-    <Box width="100%" height={"500px"} margin={"auto"}  bg="white">
+    <Box width="100%" height={"500px"} margin={"auto"} bg="white">
       <Box margin={"auto"} width={"100%"} mt={"5rem"} padding="1rem">
-        <Box fontSize={"12px"} fontWeight="300" >
+        <Box fontSize={"12px"} fontWeight="300">
           <Text
             fontSize={"16px"}
             fontWeight="650"
@@ -78,7 +86,7 @@ export const Signup = () => {
             placeholder="Enter your OTP"
             aria-label="Username"
             aria-describedby="basic-addon1"
-             textAlign={"left"}
+            textAlign={"left"}
             _hover={{ bg: "white" }}
             _expanded={{ bg: "white" }}
             _focus={{ boxShadow: "red" }}
@@ -106,12 +114,14 @@ export const Signup = () => {
             width={"100%"}
             fontSize={"14px"}
             fontWeight="450"
+            onClick={() => {
+              navigate("/");
+            }}
           >
             Continue
           </Button>
         </Box>
       </Box>
-   
     </Box>
   );
 };

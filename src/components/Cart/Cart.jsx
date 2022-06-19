@@ -38,8 +38,8 @@ export const Cart = () => {
   const [totalCost, setTotalCost] = useState(0);
   // var total = 0;
   const total = cart.reduce(function (acc, cv) {
-    console.log(cv.price);
-    return acc + cv.price;
+    // console.log(cv.price);
+    return acc + Math.floor(cv.price);
   }, 0);
   // setTotalCost(totalCost)
   // console.log(totalCost)
@@ -87,7 +87,7 @@ export const Cart = () => {
                 {cart?.map((e) => {
                   {
                     saved =
-                      saved + (e.price - (e.price - (10 * e.price) / 100));
+                      saved + (Math.floor(e.price) - Math.floor(e.price - (10 * e.price) / 100));
                     // console.log("saved",saved)
                   }
                   return (
@@ -131,7 +131,13 @@ export const Cart = () => {
                       <Td>
                         <CloseIcon onClick={() => handleDelet(e._id)} />
                       </Td>
-                      <Td> Rs {Math.floor(saved)}</Td>
+                      <Td>
+                        {" "}
+                        Rs{" "}
+                        {Math.floor(
+                          e.price - Math.floor(e.price - (10 * e.price) / 100)
+                        )}
+                      </Td>
                     </Tr>
                   );
                 })}
@@ -157,7 +163,7 @@ export const Cart = () => {
                   <Text>Delivery Charges</Text>
                 </Box>
                 <Box>
-                  <Text>Rs {Math.floor(total - saved)}</Text>
+                  <Text>Rs {Math.floor(total-saved)}</Text>
                   <Text>***</Text>
                 </Box>
                 <Box borderLeft={"1px solid #e8e8e8"} color="red" pl="2px">
