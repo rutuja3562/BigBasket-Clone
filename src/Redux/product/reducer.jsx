@@ -40,7 +40,7 @@ export const productReducer = (state = initState, action) => {
     case REMOVE_TO_CART: {
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: [ action.payload],
       };
     }
 
