@@ -3,7 +3,6 @@
     cursor: zoom-out;
     /* border:1px solid red; */
     border-width: 1px;
-   
 }
 .transition:hover{
     transform: scale(1.1);

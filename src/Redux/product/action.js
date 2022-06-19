@@ -17,13 +17,13 @@ export const fetchDataAction = (data) => {
 
 export const fetchData = (payload) => (dispatch) => {
   return axios
-    .get("http://localhost:8080/products", {
+    .get("https://rbigbasket.herokuapp.com/collection", {
       params: {
         ...payload,
       },
     })
     .then((res) => {
-      // console.log("..res..",res.data)
+      console.log("..res..",res.data)
       dispatch(fetchDataAction(res.data));
     })
     .catch((e) => console.log("UU", e));
@@ -38,12 +38,12 @@ export const getSingleProductAction = (payload) => {
 
 export const getSingleProduct = (id) => (dispatch) => {
   return axios
-    .get(`http://localhost:8080/products/${id}`)
+    .get(`https://rbigbasket.herokuapp.com/collection/${id}`)
     .then((res) => {
-      // console.log("res...",res.data);
+      // console.log("...single..res...",res.data);
       dispatch(getSingleProductAction(res.data));
     })
-    .catch((e) => console.log("ERR", e));
+    .catch((e) => console.log("ERRooo", e));
 };
 
 export const addtocartaction = (data) => ({
@@ -52,10 +52,14 @@ export const addtocartaction = (data) => ({
 });
 
 export const addtoCart = (product) => (dispatch) => {
-  axios.post("http://localhost:7005/vegetablecart", product).then((res) => {
-    // console.log("add", res.data);
-    dispatch(addtocartaction(res.data));
-  });
+  axios
+    .post("https://rbigbasket.herokuapp.com/vegetablecart", product)
+    .then((res) => {
+      // console.log("add", res.data);
+      dispatch(addtocartaction(res.data));
+    }).catch((e)=>{
+      console.log(e)
+    })
 };
 
 export const fetchcartaction = (data) => ({
@@ -81,11 +85,12 @@ export const removeItemAction = (data) => {
 
 export const removeItem = (id) => (dispatch) => {
   axios
-    .delete(`http://localhost:7005/vegetablecart/${id}`)
+    .delete(`https://rbigbasket.herokuapp.com/vegetablecart/${id}`)
     .then((res) => {
       // console.log(res.data);
       dispatch(removeItemAction(res.data));
-    }).then((r)=>{
+    })
+    .then((r) => {
       dispatch(fetchtoCart());
     })
     .catch((err) => {

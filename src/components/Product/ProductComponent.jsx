@@ -15,6 +15,7 @@ export const ProductComponent = ({ props }) => {
     // dispatch(addtocartaction(props))
     dispatch(addtoCart(props));
   }
+  console.log("PRops.id",props._id)
   return (
     <Box
       width={"33%"}
@@ -31,7 +32,7 @@ export const ProductComponent = ({ props }) => {
         zIndex={1}
         margin="1rem"
       >
-        <Link to={`/products/${props.id}`}>
+        <Link to={`/products/${props._id}`}>
           <Flex
             flexDirection="column"
             alignItems="center"

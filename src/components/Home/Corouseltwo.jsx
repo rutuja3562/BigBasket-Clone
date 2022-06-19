@@ -76,6 +76,7 @@ export default function Corouseltwo() {
       >
         <BiLeftArrowAlt />
       </IconButton>
+      
       {/* Right Icon */}
       <IconButton
         aria-label="right-arrow"

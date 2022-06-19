@@ -5,7 +5,6 @@ import { Box ,Text} from "@chakra-ui/react";
 
 export const CartLength = () => {
   const cart = useSelector((state) => state.products.cart);
-  //   console.log("cart:::", cart);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchtoCart());

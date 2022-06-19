@@ -66,7 +66,6 @@ export {
   img37,img38,img39,img40,img41,img42,img43,img44,img45,img46,img47,img48
 
 };
-
 export const data = [
   {
     id: 1,

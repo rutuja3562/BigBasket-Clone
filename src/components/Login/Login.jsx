@@ -93,8 +93,7 @@ export const Signup = () => {
             <div className="modal-header py-0 border-0">
               <h5
                 className="modal-tit text-center mt-3"
-                id="exampleModalToggleLabel"
-              >
+                id="exampleModalToggleLabel" >
                 JOIN US
               </h5>
               <button

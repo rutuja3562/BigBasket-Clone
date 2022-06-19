@@ -64,7 +64,6 @@ export const Cart = () => {
           >
             YOUR BASKET {cart.length}
           </Text>
-
           <TableContainer width="99%">
             <Table variant="simple">
               <Thead width="99%">

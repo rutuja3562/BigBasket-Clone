@@ -46,9 +46,7 @@ export default function Carousel() {
       width={"100%"}
       overflow={"hidden"}
       mt={0}
-      margin="auto"
-      // borderWidth="1px"
-      
+      margin="auto" 
       // border={"1px solid red"}
     >
       {/* CSS files for react-slick */}

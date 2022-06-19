@@ -34,8 +34,7 @@ export const LogedIn = () => {
         anchorOrigin={{
           vertical: "top",
           horizontal: "left",
-        }}
-      >
+        }} >
         <PopoverContent style={{ marginLeft: "180%", marginTop: "10%" }}>
           <Signup />
           <PopoverArrow />

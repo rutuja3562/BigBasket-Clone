@@ -57,7 +57,6 @@ export const Payment = () => {
             >
               Payment Method
             </Text>
-
             <Flex
               padding={"1rem"}
               textAlign="left"

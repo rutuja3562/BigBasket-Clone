@@ -10,7 +10,6 @@ import { useState } from "react";
 export const Navbar = () => {
   const cart = useSelector((state) => state.products.cart);
   const [login, setLogin] = useState(true);
-
   return (
     <Box width="75%" margin={"auto"} border="3px solid black">
       <Box width="40%" float={"right"} border={"1px solid blue"}>

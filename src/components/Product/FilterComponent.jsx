@@ -85,7 +85,6 @@ export const FilterComponent = () => {
     // };
     dispatch(fetchData());
   }, [setSearchParams, brandValue, priceValue, orderValue, packSize]);
-  //   searchParams,
   return (
     <Box width={"100%"} mt={"1.5rem"}>
       <Box mb="1rem" borderBottom="1px solid #e8e8e8" pb={"1rem"}>

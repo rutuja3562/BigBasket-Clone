@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
-  FormControl,
-  FormLabel,
+  FormControl, FormLabel,
   Box,
   Text,
   Input,
@@ -13,7 +12,7 @@ export const Checkout = () => {
   const navigate = useNavigate();
   return (
     <Box width={"100%"}>
-    <Topnavbar/>
+      <Topnavbar />
       <Box
         width={"75%"}
         margin="auto"

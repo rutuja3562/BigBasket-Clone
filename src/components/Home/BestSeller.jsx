@@ -45,7 +45,6 @@ export const BestSeller = () => {
                   height={230}
                   width={282}
                   objectFit={"contain"}
-                  //   border="1px solid red"
                   src={e.imgUrl}
                 />
               </Box>

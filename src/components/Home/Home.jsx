@@ -11,7 +11,6 @@ import {
 import Corouseltwo from "./Corouseltwo";
 import { BestSeller } from "./BestSeller";
 import { Topnavbar } from "../Navbar/Topnavbar";
-
 export const Home = () => {
   return (
     <Box  width="100%" margin={"auto"}>

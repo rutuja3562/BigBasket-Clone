@@ -12,7 +12,6 @@ import {
 import footer from "./footer.png"
 
 
-
 export const Footer = () => {
   return (
     <Box width={"75%"} margin="auto">

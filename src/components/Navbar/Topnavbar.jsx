@@ -83,7 +83,6 @@ export const Topnavbar = () => {
                 </Box>
               </Flex>
             </Box>
-
             <Box mt={"2rem"}>
               <Flex width={"100%"} justifyContent={"space-between"}>
                 <Flex width={"65%"} alignItems="center">

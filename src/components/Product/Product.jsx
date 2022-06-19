@@ -17,13 +17,11 @@ import { fetchData } from "../../Redux/product/action";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Topnavbar } from "../Navbar/Topnavbar";
-
 export const Product = () => {
   const product = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
     if (product?.length === 0) {
-
       dispatch(fetchData());
     }
   }, [dispatch, product?.length]);
@@ -50,11 +48,34 @@ export const Product = () => {
     getdata();
   }, []);
 
-  const getdata = () => {
-    fetch("http://localhost:8080/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
+  // fetch("  http://localhost:8080/todos")
+  //   .then((data) => data.json())
+  //   .then((data) => {
+  //     dispatch(addTodos(data));
+  //   });
+
+  const getdata = async() => {
+    await fetch("https://rbigbasket.herokuapp.com/collection")
+      .then((data) => data.json())
+      .then((data) => {
+        //  dispatch(fetchData(data));
+        setProducts(data);
+        console.log("data",data)
+      }).catch((err)=>{
+        console.log("e",err)
+      })
   };
+  // const getdata = () => {
+  //   fetch("https://rbigbasket.herokuapp.com/collection")
+  //     .then((response) => {
+  //       console.log("RESPONCE", response);
+  //       response.json();
+  //     })
+  //     .then((data) => )
+  //     .catch((err) => {
+  //       console.log("Error", err);
+  //     });
+  // };
 
   //*** Sort by price***//
 
@@ -262,10 +283,10 @@ export const Product = () => {
     orderValue,
     packSize,
   ]);
- 
+
   return (
     <Box width={"100%"}>
-    <Topnavbar/>
+      <Topnavbar />
       <Box width={"75%"} margin="auto" mt="1rem">
         <ProductSlider />
         <Box mt={"20px"} mb={"20px"}>
@@ -394,9 +415,9 @@ export const Product = () => {
     </Box>
   );
 };
-      // let params = {
-      //   brand: searchParams.getAll("brand"),
-      //   quantity: searchParams.getAll("quantity"),
-      //   _sort: searchParams.getAll("price"),
-      //   _order: searchParams.getAll("_order"),
-      //     // };
+// let params = {
+//   brand: searchParams.getAll("brand"),
+//   quantity: searchParams.getAll("quantity"),
+//   _sort: searchParams.getAll("price"),
+//   _order: searchParams.getAll("_order"),
+//     // };

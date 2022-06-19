@@ -43,7 +43,6 @@ export const productReducer = (state = initState, action) => {
         cart: [ action.payload],
       };
     }
-
     // case FETCH_CART: {
     //   return {
     //     ...state,
