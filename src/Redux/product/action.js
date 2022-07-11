@@ -17,13 +17,13 @@ export const fetchDataAction = (data) => {
 
 export const fetchData = (payload) => (dispatch) => {
   return axios
-    .get("https://rbigbasket.herokuapp.com/collection", {
+    .get("https://rbigbasket.herokuapp.com/vegetables", {
       params: {
         ...payload,
       },
     })
     .then((res) => {
-      console.log("..res..",res.data)
+      console.log("..res..", res.data);
       dispatch(fetchDataAction(res.data));
     })
     .catch((e) => console.log("UU", e));
@@ -38,7 +38,7 @@ export const getSingleProductAction = (payload) => {
 
 export const getSingleProduct = (id) => (dispatch) => {
   return axios
-    .get(`https://rbigbasket.herokuapp.com/collection/${id}`)
+    .get(`https://rbigbasket.herokuapp.com/vegetables/${id}`)
     .then((res) => {
       // console.log("...single..res...",res.data);
       dispatch(getSingleProductAction(res.data));
