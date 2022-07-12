@@ -11,11 +11,11 @@ export const ProductComponent = ({ props }) => {
   const navigate = useNavigate()
 
   const handleCart=(props)=>{
-    console.log("props",props)
+    // console.log("props",props)
     // dispatch(addtocartaction(props))
     dispatch(addtoCart(props));
   }
-  console.log("PRops.id",props._id)
+  // console.log("PRops.id",props._id)
   return (
     <Box
       width={"33%"}

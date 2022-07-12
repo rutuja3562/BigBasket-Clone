@@ -55,15 +55,16 @@ export const Product = () => {
   //   });
 
   const getdata = async() => {
-    await fetch("https://rbigbasket.herokuapp.com/collection")
+    await fetch("https://rbigbasket.herokuapp.com/vegetables")
       .then((data) => data.json())
       .then((data) => {
         //  dispatch(fetchData(data));
         setProducts(data);
-        console.log("data",data)
-      }).catch((err)=>{
-        console.log("e",err)
+        // console.log("data", data);
       })
+      .catch((err) => {
+        console.log("e", err);
+      });
   };
   // const getdata = () => {
   //   fetch("https://rbigbasket.herokuapp.com/collection")
@@ -101,7 +102,7 @@ export const Product = () => {
 
   const brandValueHandler = async (value) => {
     const data = await fetch(
-      "https://rbigbasket.herokuapp.com/collection"
+      "https://rbigbasket.herokuapp.com/vegetables"
     ).then((d) => d.json());
     setBrandValue(value);
     if (value == "Fresho") {
@@ -144,7 +145,7 @@ export const Product = () => {
     // console.log(value,typeof(value))
     // const brandValueHandler = async (value) => {
     const data = await fetch(
-      "https://rbigbasket.herokuapp.com/collection"
+      "https://rbigbasket.herokuapp.com/vegetables"
     ).then((d) => d.json());
     // setBrandValue(value);
     if (value == "100") {
@@ -228,7 +229,7 @@ export const Product = () => {
   const priceHandler = async (value) => {
     setPriceValue(value);
     const data = await fetch(
-      "https://rbigbasket.herokuapp.com/collection"
+      "https://rbigbasket.herokuapp.com/vegetables"
     ).then((d) => d.json());
 
     if (value == "0-50") {

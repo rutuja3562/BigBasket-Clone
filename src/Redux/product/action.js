@@ -23,7 +23,7 @@ export const fetchData = (payload) => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log("..res..", res.data);
+      // console.log("..res..", res.data);
       dispatch(fetchDataAction(res.data));
     })
     .catch((e) => console.log("UU", e));
@@ -37,6 +37,7 @@ export const getSingleProductAction = (payload) => {
 };
 
 export const getSingleProduct = (id) => (dispatch) => {
+  // console.log(id)
   return axios
     .get(`https://rbigbasket.herokuapp.com/vegetables/${id}`)
     .then((res) => {
@@ -68,12 +69,15 @@ export const fetchcartaction = (data) => ({
 });
 
 export const fetchtoCart = () => (dispatch) => {
-  axios.get("http://localhost:7005/vegetablecart").then((res) => {
-    // console.log("get", res.data);
-    dispatch(fetchcartaction(res.data));
-  }).catch((e)=>{
-    console.log(e)
-  })
+  axios
+    .get("https://rbigbasket.herokuapp.com/vegetablecart")
+    .then((res) => {
+      // console.log("get", res.data);
+      dispatch(fetchcartaction(res.data));
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 };
 
 export const removeItemAction = (data) => {

@@ -24,9 +24,9 @@ import { Topnavbar } from "../Navbar/Topnavbar";
 export const ProductDetails = () => {
   const dispatch = useDispatch();
   const currentProduct = useSelector((state) => state.products.currentProduct);
-  console.log("curr", currentProduct);
+  // console.log("curr", currentProduct);
   const { id } = useParams();
-  console.log("DDD",id)
+  // console.log("DDD",id)
   useEffect(() => {
     dispatch(getSingleProduct(id));
   }, []);
