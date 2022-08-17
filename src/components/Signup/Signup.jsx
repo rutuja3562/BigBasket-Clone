@@ -26,8 +26,8 @@ export const Signup = () => {
     console.log(random);
     setTimeout(() => {
       if (e.target.value == random) {
-        alert("Login Sucessful");
-        //  navigate("/product");
+        // alert("Login Sucessful");
+         navigate("/product");
       } else {
         alert("Login Unsucessful");
       }
