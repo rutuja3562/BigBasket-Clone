@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
-  FormControl, FormLabel,
+  FormControl,
+  FormLabel,
   Box,
   Text,
   Input,
@@ -9,7 +10,35 @@ import {
 import { Navigate, useNavigate } from "react-router";
 import { Topnavbar } from "./Navbar/Topnavbar";
 export const Checkout = () => {
+  const [name, setName] = useState("");
+  const [lname, setLname] = useState("");
+  const [number, setNumber] = useState("");
+  const [aprtname, setAprtname] = useState("");
+  const [house, setHouse] = useState("");
+  const [street, setStreet] = useState("");
+  const [landmark, setLandmark] = useState("");
+  const [city, setCity] = useState("");
+  const [area, setArea] = useState("");
+  const [pin, setPin] = useState("");
   const navigate = useNavigate();
+  const handleSubmit = () => {
+    if (
+      name === "" ||
+      lname === "" ||
+      number === "" ||
+      aprtname === "" ||
+      house === "" ||
+      street === "" ||
+      landmark === "" ||
+      city === "" ||
+      area === "" ||
+      pin === ""
+    ) {
+      alert("Enter all field");
+    } else {
+      navigate("/payment");
+    }
+  };
   return (
     <Box width={"100%"}>
       <Topnavbar />
@@ -46,6 +75,9 @@ export const Checkout = () => {
                 width={"100%"}
                 id="first-name"
                 placeholder=""
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Box>
             <Box width={"33%"} mr={"10px"}>
@@ -57,6 +89,9 @@ export const Checkout = () => {
                 width={"100%"}
                 id="first-name"
                 placeholder=""
+                required
+                value={lname}
+                onChange={(e) => setLname(e.target.value)}
               />
             </Box>
             <Box width={"33%"} mr={"10px"}>
@@ -72,6 +107,9 @@ export const Checkout = () => {
                 width={"100%"}
                 id="contact-number"
                 placeholder=""
+                required
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
               />
             </Box>
           </FormControl>
@@ -99,6 +137,9 @@ export const Checkout = () => {
                   width={"100%"}
                   id="first-name"
                   placeholder=""
+                  required
+                  value={house}
+                  onChange={(e) => setHouse(e.target.value)}
                 />
               </Box>
               <Box width={"75%"} mr={"10px"}>
@@ -114,6 +155,9 @@ export const Checkout = () => {
                   width={"100%"}
                   id="first-name"
                   placeholder=""
+                  required
+                  value={aprtname}
+                  onChange={(e) => setAprtname(e.target.value)}
                 />
               </Box>
             </Box>
@@ -131,6 +175,9 @@ export const Checkout = () => {
                   width={"100%"}
                   id="first-name"
                   placeholder=""
+                  required
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
                 />
               </Box>
               <Box width={"50%"} mr={"10px"}>
@@ -156,6 +203,8 @@ export const Checkout = () => {
                   errorBorderColor="#84c225"
                   borderRadius="0"
                   borderWidth="0.025px"
+                  value={landmark}
+                  onChange={(e) => setLandmark(e.target.value)}
                 />
               </Box>
             </Box>
@@ -173,6 +222,8 @@ export const Checkout = () => {
                   width={"100%"}
                   id="first-name"
                   placeholder=""
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               </Box>
               <Box width={"50%"} mr={"10px"}>
@@ -188,6 +239,8 @@ export const Checkout = () => {
                   width={"100%"}
                   id="first-name"
                   placeholder=""
+                  value={area}
+                  onChange={(e) => setArea(e.target.value)}
                 />
               </Box>
               <Box width={"25%"} mr={"10px"}>
@@ -204,11 +257,13 @@ export const Checkout = () => {
                   id="first-name"
                   placeholder=""
                   required
+                  value={pin}
+                  onChange={(e) => setPin(e.target.value)}
                 />
               </Box>
             </Box>
             <Box float={"left"} m={"1rem 0 1rem 0.25rem "}>
-              <Button variant={"outline"} onClick={() => navigate("/payment")}>
+              <Button variant={"outline"} onClick={handleSubmit}>
                 Add Address
               </Button>
             </Box>

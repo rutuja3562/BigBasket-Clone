@@ -4,12 +4,14 @@ import {
   FETCH_TO_CART,
   GET_SINGLE_PRODUCT,
   REMOVE_TO_CART,
+  SET_ORDER,
 } from "./action";
 
 const initState = {
   product: [],
   currentProduct: {},
   cart: [],
+  order:[]
 };
 export const productReducer = (state = initState, action) => {
   switch (action.type) {
@@ -34,13 +36,19 @@ export const productReducer = (state = initState, action) => {
     case FETCH_TO_CART: {
       return {
         ...state,
-        cart:[ ...action.payload],
+        cart: [...action.payload],
       };
     }
     case REMOVE_TO_CART: {
       return {
         ...state,
-        cart: [ action.payload],
+        cart: [action.payload],
+      };
+    }
+    case SET_ORDER: {
+      return {
+        ...state,
+        order: [...state.order, action.payload],
       };
     }
     // case FETCH_CART: {
