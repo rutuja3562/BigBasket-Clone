@@ -71,7 +71,7 @@ export const Razor = () => {
           amount: sum,
         };
         dispatch(addOrder(paymentdata));
-        // navigate("/");
+        navigate("/");
       },
 
       prefill: {
