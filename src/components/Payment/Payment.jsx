@@ -14,7 +14,6 @@ import { Navigate, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { Topnavbar } from "../Navbar/Topnavbar";
 import { LogedIn } from "../Login/LogedIn";
-// import { Rezor } from "../Razor";
 import { Razor } from "../Razor";
 export const Payment = () => {
   const navigate = useNavigate();

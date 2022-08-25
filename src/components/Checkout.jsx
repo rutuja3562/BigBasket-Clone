@@ -7,7 +7,7 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
-import { Navigate, useNavigate } from "react-router";
+import {useNavigate } from "react-router";
 import { Topnavbar } from "./Navbar/Topnavbar";
 export const Checkout = () => {
   const [name, setName] = useState("");
