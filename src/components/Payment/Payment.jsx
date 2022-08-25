@@ -38,7 +38,7 @@ export const Payment = () => {
   return (
     <Box width={"100%"}>
       <Topnavbar />
-      <Box width={"75%"} margin="auto" mt="3rem" mb="3rem" border="1px">
+      <Box width={"75%"} margin="auto" mt="3rem" mb="3rem" >
         <Flex width={"100%"} justifyContent={"center"}>
           <Box
             width={"50%"}
