@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Bigbasket Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction 
 
-## Available Scripts
+The best online grocery store in India. bigbasket is an online supermarket for all your daily needs. I was cloned Big Basket website using react-Redux.
+This is my individual project based on React and Redux.
 
-In the project directory, you can run:
+### Tech-stack used
 
-### `npm start`
+Frontend : React JS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend   : Node Js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+State Management : Redux
 
-### `npm test`
+DataBase   : MongoDB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+UI Library : Chakra UI
 
-### `npm run build`
+###  Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ | Serial No            | Feature                                                              |
+| ----------------- | ------------------------------------------------------------------ |
+| 1 | User signup and Login |
+| 2 | Products Page with Filter and Sort Functionalities |
+| 3 | Dynamic add to cart feature |
+| 4 | Dynamic cart page using Redux |
+| 5 | Dummy payment using UPI-Paytm |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Sample Page Images
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1) Home Page
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Screenshot (108)](https://user-images.githubusercontent.com/96000964/180591743-63917918-25ed-4043-9f82-7b7d2bda4dd6.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Screenshot (109)](https://user-images.githubusercontent.com/96000964/180591747-fa60d5d9-bfa4-4dc5-babb-5dad71ccc70f.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### 2) User Login Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Screenshot (110)](https://user-images.githubusercontent.com/96000964/180591989-d65f2998-55cc-46ee-a7ca-13d054f17c44.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 3) Products Page
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Screenshot (111)](https://user-images.githubusercontent.com/96000964/180592008-c7ebb338-4061-4c4c-ae5e-c7ea1109d554.png)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Screenshot (112)](https://user-images.githubusercontent.com/96000964/180592012-519272cc-1b39-491b-a71a-0b3ff58bc488.png)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 4) Product Display Page
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Screenshot (113)](https://user-images.githubusercontent.com/96000964/180592037-d13b4896-8d5f-486d-834c-eff33d71e7fc.png)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 5) Cart Page
+
+
+![Screenshot (114)](https://user-images.githubusercontent.com/96000964/180592050-5f68c8eb-7642-4b39-b9d9-cbb68a8f3e79.png)
+
+### 6) Payment Page
+
+
+![Screenshot (116)](https://user-images.githubusercontent.com/96000964/180592065-daf307d3-04af-4d5c-8a9f-ede089215364.png)
