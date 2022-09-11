@@ -37,6 +37,18 @@ export const LogedIn = () => {
         }} >
         <PopoverContent style={{ marginLeft: "180%", marginTop: "10%" }}>
           <Signup />
+          <Button
+            varient={"solid"}
+            bg={"#84c225"}
+            schema="white"
+            color="white"
+            width={"100%"}
+            fontSize={"14px"}
+            fontWeight="450"
+            onClick={onClose}
+          >
+            Continue
+          </Button>
           <PopoverArrow />
           <PopoverCloseButton />
         </PopoverContent>

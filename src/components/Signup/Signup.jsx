@@ -1,41 +1,39 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Input,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Button, Input, Text} from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useContext } from "react";
-import { AuthContext } from "../Context/AuthContext";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router";
-import { LogedIn } from "../Login/LogedIn";
+import {  useNavigate } from "react-router";
 export const Signup = () => {
-  const { isOpen, onToggle, onClose } = useDisclosure();
-  const [login, setLogin] = useState(false);
+  const [mob, setMob] = useState("");
+  const [Random,setRandom]=useState("")
+  const [otp,setOtp]=useState("")
   const navigate = useNavigate();
-  const { auth, handleAuth } = useContext(AuthContext);
   var random = Math.floor(Math.random(4) * 10000);
   const handleotp = () => {
-    alert(random);
+    if (mob !== "") {
+      alert(random);
+      setRandom(random)
+    } else {
+      alert("Enter mobile Number");
+    }
+  
   };
   const checkotp = (e) => {
-    console.log(e.target.value);
-    console.log(random);
-    setTimeout(() => {
-      if (e.target.value == random) {
-        // alert("Login Sucessful");
-         navigate("/product");
-      } else {
-        alert("Login Unsucessful");
-      }
-    }, 4000);
+    console.log(e.target.value==Random)
+      if ( e.target.value == Random) {
+          navigate("/");
+      } 
   };
-  
+
   return (
-    <Box width="100%" height={"500px"} margin={"auto"} bg="white">
+    <Box
+      width="100%"
+      height={"350px"}
+      textalign="center"
+      mt={"100px"}
+      margin={"auto"}
+      bg="white"
+    >
       <Box margin={"auto"} width={"100%"} mt={"5rem"} padding="1rem">
         <Box fontSize={"12px"} fontWeight="300">
           <Text
@@ -66,6 +64,8 @@ export const Signup = () => {
             maxLength="10"
             minLength="10"
             required
+            value={mob}
+            onChange={(e)=>setMob(e.target.value)}
           />
           <Button
             variant={"outline"}
@@ -77,7 +77,7 @@ export const Signup = () => {
             mb={"1rem"}
             onClick={handleotp}
           >
-            Login using Mobile Number
+            Get Otp
           </Button>
           <Input
             type="text"
@@ -105,20 +105,6 @@ export const Signup = () => {
               checkotp(e);
             }}
           />
-          <Button
-            varient={"solid"}
-            bg={"#84c225"}
-            schema="white"
-            color="white"
-            width={"100%"}
-            fontSize={"14px"}
-            fontWeight="450"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Continue
-          </Button>
         </Box>
       </Box>
     </Box>
