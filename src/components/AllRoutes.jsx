@@ -11,6 +11,7 @@ import { Cart } from "./Cart/Cart";
 import { Checkout } from "./Checkout";
 import { Payment } from "./Payment/Payment";
 import { Signup } from "./Signup/Signup";
+import SignIn from "./Login/SignIn";
 export const AllRoutes = () => {
   return (
     <Box width={"100%"}>
@@ -21,7 +22,7 @@ export const AllRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/payment" element={<Payment />}></Route>
-        <Route path="/signup" element={<Signup/>}></Route>
+        {/*<Route path="/signup" element={<Signup/>}></Route>*/}
       </Routes>
       <Footer />
     </Box>

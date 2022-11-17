@@ -44,3 +44,16 @@
   font-weight: 300;
   font-size: 12px;
 }
+.none{
+  display: none;
+}
+.block{
+  display: block;
+ }
+.model{
+  width:700px;
+  height:70px;
+  /* border:2px solid red; */
+  /* background: rgb(239, 231, 232); */
+
+}

@@ -12,12 +12,21 @@ import {
   useDisclosure,
   Heading,
   Link,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  Modal,
+  TabPanel,
+  TabPanels,
+  Tab,
+  TabList,
+  Tabs,
 } from "@chakra-ui/react";
 import { PhoneIcon, SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { ImLocation2 } from "react-icons/im";
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser,AiOutlineClose } from "react-icons/ai";
 import { BsBasket3 } from "react-icons/bs";
-import styles from "./navbar.module.css";
+import styles from "./navbar.css";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { CartLength } from "../CartLength";
@@ -25,11 +34,15 @@ import { LogedIn } from "../Login/LogedIn";
 import { useState } from "react";
 import axios from "axios";
 import { ProductComponent } from "../Product/ProductComponent";
+import SignIn from "../Login/SignIn";
+import Sign from "../Signup/Sign";
 
 // import {Link as RouterLink} from "react-router-dom"
 
 export const Topnavbar = () => {
   const [inputvalue, setInputValue] = useState("");
+  const [loggedIn,setLoggedIn]=useState(false);
+  const [show,setShow]=useState(false)
   const navigate = useNavigate();
   const cart = useSelector((state) => state.products.cart);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,9 +63,7 @@ export const Topnavbar = () => {
         });
     }
   };
-  //   const getSearchProduct=(veg)=>{
-  // axios.post(``)
-  //   }
+
   return (
     <Box width={"75%"} margin="auto">
       <Box>
@@ -100,9 +111,35 @@ export const Topnavbar = () => {
                     <Box mr={"0.5rem"}>
                       <AiOutlineUser size="16px" />
                     </Box>
-                    <Box>
-                      <LogedIn />
-                    </Box>
+                 
+                     <Box>
+                     <Box onClick={()=>setShow(true)}>Signup</Box>
+ 
+                     <Modal isOpen={show } onClose={onClose}>
+                     <ModalOverlay />
+                     <ModalContent className="model">
+                     <Box onClick={()=>setShow(false)} display="flex" margin={2} padding={"5px"} flexFlow={"row-reverse"} ><AiOutlineClose size={30} /></Box>
+                        {show ?<div className="block">
+                        <Box w="100%" bg="white" p="4" borderRadius={"lg"} borderWidth="1px">
+                        <Tabs variant="soft-rounded"  colorScheme={"green"}>
+                          <TabList mb="1em">
+                            <Tab w="50%">Login</Tab>
+                            <Tab w="50%">Sign Up</Tab>
+                          </TabList>
+                          <TabPanels>
+                            <TabPanel>
+                              <SignIn  setshow={setShow}/>
+                            </TabPanel>
+                            <TabPanel>
+                              <Sign/>
+                            </TabPanel>
+                          </TabPanels>
+                        </Tabs>
+                      </Box>
+                      </div> :<div className="none"></div>}
+                      </ModalContent>
+                     </Modal>
+                      </Box>
                   </Flex>
                 </Box>
               </Flex>
