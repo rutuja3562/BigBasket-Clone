@@ -97,7 +97,6 @@ import {
                 h="1.75rem"
                 size="sm"
                 onClick={handleClick}
-                // colorScheme={"green"}
                 bg="#84c225"
               >
                 {show ? "Hide" : "Show"}
