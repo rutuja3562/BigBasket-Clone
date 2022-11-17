@@ -8,282 +8,59 @@ import {
   CheckboxGroup,
   VStack,
 } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import { ProductSlider } from "./Slider";
-import { FilterComponent } from "./FilterComponent";
 import { ProductComponent } from "./ProductComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../Redux/product/action";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Topnavbar } from "../Navbar/Topnavbar";
+import axios from "axios";
 export const Product = () => {
-  const product = useSelector((state) => state);
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (product?.length === 0) {
-      dispatch(fetchData());
-    }
-  }, [dispatch, product?.length]);
+  const product = useSelector((state) => state.products.product);
 
-  // ***product component****//
-  const navigate = useNavigate();
+  // console.log("product",product);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [brandValue, setBrandValue] = useState(
-    searchParams.getAll("brand") || []
-  );
-  const [packSize, setPackSize] = useState(
-    searchParams.getAll("quantity") || []
-  );
-  const [priceValue, setPriceValue] = useState(
-    searchParams.getAll("price") || []
-  );
-  const [orderValue, setOrderValue] = useState(
-    searchParams.getAll("_order") || []
-  );
-  const [products, setProducts] = useState([]);
-  // const dispatch = useDispatch();
-
-  useEffect(() => {
-    getdata();
-  }, []);
-
-  // fetch("  http://localhost:8080/todos")
-  //   .then((data) => data.json())
-  //   .then((data) => {
-  //     dispatch(addTodos(data));
-  //   });
-
-  const getdata = async() => {
-    await fetch("https://rbigbasket.herokuapp.com/vegetables")
-      .then((data) => data.json())
-      .then((data) => {
-        //  dispatch(fetchData(data));
-        setProducts(data);
-        // console.log("data", data);
-      })
-      .catch((err) => {
-        console.log("e", err);
-      });
+  const [orderValue, setOrderValue] = useState(searchParams.get("order") );
+  const [brandValue, setbrandValue] = useState(searchParams.getAll("brand"));
+  const [sizeValue, setsizeValue] = useState(searchParams.getAll("quantity"));
+  const [priceValue, setPriceValue] = useState();
+  const priceHandler = (value) => {
+    setOrderValue(value);
   };
-  // const getdata = () => {
-  //   fetch("https://rbigbasket.herokuapp.com/collection")
-  //     .then((response) => {
-  //       console.log("RESPONCE", response);
-  //       response.json();
-  //     })
-  //     .then((data) => )
-  //     .catch((err) => {
-  //       console.log("Error", err);
-  //     });
+console.log("LL",orderValue)
+  const brandHandler = (value) => {
+    setbrandValue(value);
+  };
+console.log(typeof(orderValue),orderValue)
+  const sizeHandler = (value) => {
+    setsizeValue(value);
+  };
+
+
+  // const priceHandlervalue = (value) => {
+  //   setPriceValue(value);
+  //   console.log("Pricevalue", priceValue);
   // };
-
-  //*** Sort by price***//
-
-  const HandleSelect = (e) => {
-    setOrderValue(e.target.value);
-    if (e.target.value === "low") {
-      const data = [...products].sort((a, b) => {
-        return a.price - b.price;
-      });
-      // console.log(data);
-      setProducts(data);
-    }
-    if (e.target.value === "high") {
-      const data = [...products].sort((a, b) => {
-        return b.price - a.price;
-      });
-      // console.log("dta", data);
-      setProducts(data);
-    }
-  };
-
-  //*** Filter by Brand***//
-
-  const brandValueHandler = async (value) => {
-    const data = await fetch(
-      "https://rbigbasket.herokuapp.com/vegetables"
-    ).then((d) => d.json());
-    setBrandValue(value);
-    if (value == "Fresho") {
-      const filteredArr = data.filter((a) => {
-        if (a.brand == "Fresho") {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == "Organic") {
-      const filteredArr = data.filter((a) => {
-        if (a.brand == "Organic") {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == "Hoovu Fresh") {
-      const filteredArr = data.filter((a) => {
-        if (a.brand == "Hoovu Fresh") {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == "Brotos") {
-      const filteredArr = data.filter((a) => {
-        if (a.brand == "Brotos") {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else {
-      setProducts(data);
-    }
-  };
-
-  //*** Filter by PackSizeHandler***//
-
-  const packSizeHandler = async (value) => {
-    setPackSize(value);
-    // console.log(value,typeof(value))
-    // const brandValueHandler = async (value) => {
-    const data = await fetch(
-      "https://rbigbasket.herokuapp.com/vegetables"
-    ).then((d) => d.json());
-    // setBrandValue(value);
-    if (value == "100") {
-      const filteredArr = data.filter((a) => {
-        // console.log(Number(a.quantity))
-        // console.log(a.quantity,"???",typeof(a.quantity))
-        // console.log(a.quantity===100);
-        if (a.quantity == "100") {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    }
-    if (value == 250) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 250) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    }
-    if (value == 500) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 500) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    }
-    if (value == 1) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 1) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-      // }
-    } else if (value == 2) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 2) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == 1) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 1) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == 2) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 2) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == 2) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 2) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == 40) {
-      const filteredArr = data.filter((a) => {
-        if (a.quantity == 40) {
-          return a;
-        }
-      });
-
-      setProducts(filteredArr);
-    } else {
-      setProducts(data);
-    }
-  };
-
-  //*** Filter by Price***//
-
-  const priceHandler = async (value) => {
-    setPriceValue(value);
-    const data = await fetch(
-      "https://rbigbasket.herokuapp.com/vegetables"
-    ).then((d) => d.json());
-
-    if (value == "0-50") {
-      const filteredArr = data.filter((a) => {
-        if (a.price >= 0 && a.price <= 50) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == "51-100") {
-      const filteredArr = data.filter((a) => {
-        if (a.price > 51 && a.price <= 100) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else if (value == "101-150") {
-      const filteredArr = data.filter((a) => {
-        if (a.price > 101 && a.price <= 150) {
-          return a;
-        }
-      });
-      setProducts(filteredArr);
-    } else {
-      setProducts(data);
-    }
-  };
-
   useEffect(() => {
-    setSearchParams(
-      {
-        brand: brandValue,
-        quantity: packSize,
-        price: priceValue,
-        _order: orderValue,
-      },
-      { replace: true }
-    );
-    const params = {
-      brand: searchParams.getAll("brand"),
-      quantity: searchParams.getAll("quantity"),
-      price: searchParams.getAll("price"),
-      _sort: "price",
-      _order: searchParams.get("_order"),
-    };
-    dispatch(fetchData(params));
-  }, [
-    setSearchParams,
-    searchParams,
-    brandValue,
-    priceValue,
-    orderValue,
-    packSize,
-  ]);
+    if (orderValue || brandValue.length !== 0 || sizeValue !== 0) {
+      setSearchParams(
+            { brand: brandValue, quantity: sizeValue, order: orderValue },
+            { replace: true }
+          )
+       
+
+      const params = {
+        brand: searchParams.getAll("brand"),
+        // sort: "price",
+        order: searchParams.getAll("order"),
+        quantity: searchParams.getAll("quantity"),
+      };
+
+      dispatch(fetchData(params));
+    }
+  }, [brandValue, searchParams, orderValue, sizeValue, setSearchParams]);
 
   return (
     <Box width={"100%"}>
@@ -313,21 +90,33 @@ export const Product = () => {
                 {/*  <FilterComponent />*/}
                 <Box width={"100%"} mt={"1.5rem"}>
                   <Box mb="1rem" borderBottom="1px solid #e8e8e8" pb={"1rem"}>
-                    <Box mb={"2rem"}>
-                      <select id="cars1" onChange={HandleSelect}>
-                        <option>price</option>
-                        <option value="low">Low To High</option>
-                        <option value="high">High To Low</option>
-                      </select>
-                    </Box>
+                    <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
+                      filter by Price
+                    </Text>
+                    <CheckboxGroup
+                      colorScheme="green"
+                      defaultValue={orderValue}
+                      onChange={priceHandler}
+                    >
+                      <VStack
+                        direction={["column", "row"]}
+                        alignItems={"baseline"}
+                        fontSize={"12px"}
+                        fontWeight={"375"}
+                      >
+                        <Checkbox value="asc">Low to high</Checkbox>
+                        <Checkbox value="desc">High to Low</Checkbox>
+                      </VStack>
+                    </CheckboxGroup>
+                    <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
+                      Brand
+                    </Text>
                     <CheckboxGroup
                       colorScheme="green"
                       defaultValue={brandValue}
-                      onChange={brandValueHandler}
+                      // onChange={brandValueHandler}
+                      onChange={brandHandler}
                     >
-                      <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
-                        Brand
-                      </Text>
                       <VStack
                         direction={["column", "row"]}
                         alignItems={"baseline"}
@@ -342,14 +131,15 @@ export const Product = () => {
                     </CheckboxGroup>
                   </Box>
                   <Box pb={"1rem"} mb="1rem" borderBottom="1px solid #e8e8e8">
+                    <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
+                      Pack Size
+                    </Text>
                     <CheckboxGroup
                       colorScheme="green"
-                      defaultValue={packSize}
-                      onChange={packSizeHandler}
+                      defaultValue={sizeValue}
+                      // onChange={packSizeHandler}
+                      onChange={sizeHandler}
                     >
-                      <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
-                        Pack Size
-                      </Text>
                       <VStack
                         direction={["column", "row"]}
                         alignItems={"baseline"}
@@ -365,14 +155,15 @@ export const Product = () => {
                     </CheckboxGroup>
                   </Box>
                   <Box pb={"1rem"} mb="1rem" borderBottom="1px solid #e8e8e8">
+                    <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
+                      Price
+                    </Text>
                     <CheckboxGroup
                       colorScheme="green"
                       defaultValue={priceValue}
-                      onChange={priceHandler}
+                      onChange={(value) => {setPriceValue(value)
+                      console.log(priceValue)}}
                     >
-                      <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
-                        Price
-                      </Text>
                       <VStack
                         direction={["column", "row"]}
                         alignItems={"baseline"}
@@ -401,13 +192,14 @@ export const Product = () => {
                   fontSize={"20px"}
                   fontWeight={400}
                 >
-                  Fruits & Vegetables ({products.length})
+                  Fruits & Vegetables ({product.length})
                 </Text>
               </Stack>
               <Flex flexWrap={"wrap"} borderTop={"1px solid #e8e8e8"}>
-                {products.map((e) => {
-                  return <ProductComponent key={e._id} props={e} />;
-                })}
+                {product &&
+                  product.map((e) => {
+                    return <ProductComponent key={e._id} props={e} />;
+                  })}
               </Flex>
             </Box>
           </Flex>
@@ -416,9 +208,5 @@ export const Product = () => {
     </Box>
   );
 };
-// let params = {
-//   brand: searchParams.getAll("brand"),
-//   quantity: searchParams.getAll("quantity"),
-//   _sort: searchParams.getAll("price"),
-//   _order: searchParams.getAll("_order"),
-//     // };
+
+
