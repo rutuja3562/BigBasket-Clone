@@ -16,24 +16,35 @@ import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Topnavbar } from "../Navbar/Topnavbar";
 import axios from "axios";
+import LoadingComp from "./LoadingComp";
 export const Product = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.product);
-
   // console.log("product",product);
   const [searchParams, setSearchParams] = useSearchParams();
   const [orderValue, setOrderValue] = useState(searchParams.get("order") );
   const [brandValue, setbrandValue] = useState(searchParams.getAll("brand"));
   const [sizeValue, setsizeValue] = useState(searchParams.getAll("quantity"));
   const [priceValue, setPriceValue] = useState();
+  const [loading,setLoading]=useState(false);
+  useEffect(()=>{
+    if(product.length>=1){
+
+      setLoading(true)
+    }
+  })
+  // if(product.length>=1){
+  //   setLoading(true)
+  // }
+  
   const priceHandler = (value) => {
     setOrderValue(value);
   };
-console.log("LL",orderValue)
+// console.log("LL",orderValue)
   const brandHandler = (value) => {
     setbrandValue(value);
   };
-console.log(typeof(orderValue),orderValue)
+// console.log(typeof(orderValue),orderValue)
   const sizeHandler = (value) => {
     setsizeValue(value);
   };
@@ -44,6 +55,7 @@ console.log(typeof(orderValue),orderValue)
   //   console.log("Pricevalue", priceValue);
   // };
   useEffect(() => {
+setLoading(false)
     if (orderValue || brandValue.length !== 0 || sizeValue !== 0) {
       setSearchParams(
             { brand: brandValue, quantity: sizeValue, order: orderValue },
@@ -60,11 +72,13 @@ console.log(typeof(orderValue),orderValue)
 
       dispatch(fetchData(params));
     }
+    setLoading(true)
   }, [brandValue, searchParams, orderValue, sizeValue, setSearchParams]);
 
   return (
     <Box width={"100%"}>
       <Topnavbar />
+      {product.length==0 ? <Box width="98%" border='1px solid red' margin={"auto"}><LoadingComp/></Box>:
       <Box width={"75%"} margin="auto" mt="1rem">
         <ProductSlider />
         <Box mt={"20px"} mb={"20px"}>
@@ -205,6 +219,7 @@ console.log(typeof(orderValue),orderValue)
           </Flex>
         </Box>
       </Box>
+                }
     </Box>
   );
 };
