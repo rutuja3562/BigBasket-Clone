@@ -20,7 +20,6 @@ import LoadingComp from "./LoadingComp";
 export const Product = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.product);
-  // console.log("product",product);
   const [searchParams, setSearchParams] = useSearchParams();
   const [orderValue, setOrderValue] = useState(searchParams.get("order") );
   const [brandValue, setbrandValue] = useState(searchParams.getAll("brand"));
@@ -29,33 +28,24 @@ export const Product = () => {
   const [loading,setLoading]=useState(false);
   useEffect(()=>{
     if(product.length>=1){
-
       setLoading(true)
     }
   })
-  // if(product.length>=1){
-  //   setLoading(true)
-  // }
-  
+
   const priceHandler = (value) => {
     setOrderValue(value);
   };
-// console.log("LL",orderValue)
+
   const brandHandler = (value) => {
     setbrandValue(value);
   };
-// console.log(typeof(orderValue),orderValue)
+
   const sizeHandler = (value) => {
     setsizeValue(value);
   };
 
-
-  // const priceHandlervalue = (value) => {
-  //   setPriceValue(value);
-  //   console.log("Pricevalue", priceValue);
-  // };
   useEffect(() => {
-setLoading(false)
+    setLoading(false)
     if (orderValue || brandValue.length !== 0 || sizeValue !== 0) {
       setSearchParams(
             { brand: brandValue, quantity: sizeValue, order: orderValue },
@@ -65,7 +55,6 @@ setLoading(false)
 
       const params = {
         brand: searchParams.getAll("brand"),
-        // sort: "price",
         order: searchParams.getAll("order"),
         quantity: searchParams.getAll("quantity"),
       };
@@ -78,7 +67,7 @@ setLoading(false)
   return (
     <Box width={"100%"}>
       <Topnavbar />
-      {product.length==0 ? <Box width="98%" border='1px solid red' margin={"auto"}><LoadingComp/></Box>:
+      {product.length==0 ? <Box width="98%"><LoadingComp/></Box>:
       <Box width={"75%"} margin="auto" mt="1rem">
         <ProductSlider />
         <Box mt={"20px"} mb={"20px"}>
@@ -101,7 +90,7 @@ setLoading(false)
                 Fruites & Vegetables
               </Text>
               <Flex>
-                {/*  <FilterComponent />*/}
+               
                 <Box width={"100%"} mt={"1.5rem"}>
                   <Box mb="1rem" borderBottom="1px solid #e8e8e8" pb={"1rem"}>
                     <Text fontSize={"14px"} fontWeight={"500"} mb={"1rem"}>
@@ -128,7 +117,6 @@ setLoading(false)
                     <CheckboxGroup
                       colorScheme="green"
                       defaultValue={brandValue}
-                      // onChange={brandValueHandler}
                       onChange={brandHandler}
                     >
                       <VStack
@@ -151,7 +139,6 @@ setLoading(false)
                     <CheckboxGroup
                       colorScheme="green"
                       defaultValue={sizeValue}
-                      // onChange={packSizeHandler}
                       onChange={sizeHandler}
                     >
                       <VStack

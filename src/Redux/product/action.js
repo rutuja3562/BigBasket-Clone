@@ -17,6 +17,7 @@ export const fetchDataAction = (data) => {
 
 export const fetchData = (payload) => (dispatch) => {
   return axios
+  // .get('https://rbigbasket.herokuapp.com/vegetables',{
     .get("https://rbigbasket.herokuapp.com/vegetables", {
       params: {
         ...payload,
