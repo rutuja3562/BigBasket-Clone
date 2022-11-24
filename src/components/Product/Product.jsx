@@ -46,19 +46,17 @@ export const Product = () => {
 
   useEffect(() => {
     setLoading(false)
-    if (orderValue || brandValue.length !== 0 || sizeValue !== 0) {
+    if (orderValue!=null  || brandValue.length !== 0 || sizeValue !== 0) {
       setSearchParams(
             { brand: brandValue, quantity: sizeValue, order: orderValue },
             { replace: true }
           )
-       
-
       const params = {
         brand: searchParams.getAll("brand"),
-        order: searchParams.getAll("order"),
+        order: searchParams.get("order"),
         quantity: searchParams.getAll("quantity"),
       };
-
+// console.log("SERARCH",params.order)
       dispatch(fetchData(params));
     }
     setLoading(true)
