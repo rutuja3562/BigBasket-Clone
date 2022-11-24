@@ -24,7 +24,7 @@ export const fetchData = (payload) => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log("..res..", res.data.vegetables);
+      // console.log("..res..", res.data.vegetables);
       dispatch(fetchDataAction(res.data.vegetables));
     })
     .catch((e) => console.log("UU", e));
