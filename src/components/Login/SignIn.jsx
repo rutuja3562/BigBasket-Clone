@@ -40,7 +40,7 @@ import {
           headers: { "Content-type": "application/json" },
         };
       const {data}= await axios.post(
-        "https://rbigbasket.herokuapp.com/login",
+        "https://web-production-373c.up.railway.app/login",
           // "http://localhost:5000/login",
           { email, password },
           config

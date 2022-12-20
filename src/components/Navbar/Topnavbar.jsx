@@ -49,7 +49,7 @@ export const Topnavbar = () => {
   const handleSearch = () => {
     if (inputvalue !== "") {
       axios
-        .get(`http://localhost:7005/vegetables?search=${inputvalue}`)
+        .get(`https://web-production-373c.up.railway.app/vegetables?search=${inputvalue}`)
         .then((res) => {
           console.log(res.data.vegetables[0]._id);
           // getSearchProduct(res.data.vegetables[0].)

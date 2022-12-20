@@ -35,8 +35,7 @@ import {
         const config = {
           headers: { "Content-type": "application/json" },
         };
-        await axios.post(
-          "https://rbigbasket.herokuapp.com/register",
+        await axios.post("https://web-production-373c.up.railway.app/register",
           // "http://localhost:7005/register",
           { email, password },
           config
@@ -67,7 +66,7 @@ import {
           <Input
           type='email'
             value={email}
-            placeholder="Enter username"
+            placeholder="Enter Email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormControl>
