@@ -46,7 +46,7 @@ export const Razor = () => {
     }
 
     const data = await fetch(
-      `https://web-production-373c.up.railway.app/razorpay?price=${sum}`,
+      `https://web-production-ae8c.up.railway.app/razorpay?price=${sum}`,
       {
         method: "POST",
       }

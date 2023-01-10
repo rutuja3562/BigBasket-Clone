@@ -17,7 +17,7 @@ export const fetchDataAction = (data) => {
 export const fetchData = (payload) => (dispatch) => {
   return axios
   // .get('https://rbigbasket.herokuapp.com/vegetables',{
-    .get("https://web-production-373c.up.railway.app/vegetables", {
+    .get("https://web-production-ae8c.up.railway.app/vegetables", {
       params: {
         ...payload,
       },
@@ -39,7 +39,7 @@ export const getSingleProductAction = (payload) => {
 export const getSingleProduct = (id) => (dispatch) => {
   // console.log(id)
   return axios
-  .get(`https://web-production-373c.up.railway.app/vegetables/${id}`)
+  .get(`https://web-production-ae8c.up.railway.app/vegetables/${id}`)
     // .get(`https://rbigbasket.herokuapp.com/vegetables/${id}`)
     .then((res) => {
       // console.log("...single..res...",res.data);
@@ -55,7 +55,7 @@ export const addtocartaction = (data) => ({
 
 export const addtoCart = (product) => (dispatch) => {
   axios
-    .post("https://web-production-373c.up.railway.app/vegetablecart", product)
+    .post("https://web-production-ae8c.up.railway.app/vegetablecart", product)
     // .post("https://rbigbasket.herokuapp.com/vegetablecart", product)
     .then((res) => {
       // console.log("add", res.data);
@@ -72,7 +72,7 @@ export const fetchcartaction = (data) => ({
 
 export const fetchtoCart = () => (dispatch) => {
   axios
-    .get("https://web-production-373c.up.railway.app/vegetablecart")
+    .get("https://web-production-ae8c.up.railway.app/vegetablecart")
     // .get("https://rbigbasket.herokuapp.com/vegetablecart")
     .then((res) => {
       // console.log("get", res.data);
@@ -92,7 +92,7 @@ export const removeItemAction = (data) => {
 
 export const removeItem = (id) => (dispatch) => {
   axios
-    .delete(`https://web-production-373c.up.railway.app/vegetablecart/${id}`)
+    .delete(`https://web-production-ae8c.up.railway.app/vegetablecart/${id}`)
     // .delete(`https://rbigbasket.herokuapp.com/vegetablecart/${id}`)
     .then((res) => {
       // console.log(res.data);
@@ -114,7 +114,7 @@ export const setorderaction = (data) => ({
 export const addOrder = (product) => (dispatch) => {
   console.log("DAAA", product);
   axios
-    .post("https://web-production-373c.up.railway.app/rasor", product)
+    .post("https://web-production-ae8c.up.railway.app/rasor", product)
     // .post("https://rbigbasket.herokuapp.com/rasor", product)
     .then((res) => {
       console.log("....add...", res);
